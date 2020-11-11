@@ -203,6 +203,7 @@ typedef enum _sai_queue_attr_t
      *
      * @type sai_uint16_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY | KEY
+     * @isvlan false
      * @condition SAI_QUEUE_ATTR_TYPE == SAI_QUEUE_TYPE_SERVICE
      */
     SAI_QUEUE_ATTR_SERVICE_ID = SAI_QUEUE_ATTR_CUSTOM_RANGE_START,

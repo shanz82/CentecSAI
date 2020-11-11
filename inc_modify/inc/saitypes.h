@@ -146,7 +146,7 @@ typedef struct _sai_timeoffset_t
     /** Positive and negative flag bits, 0 indicates it is positive, 1 indicates it is negative */
     uint8_t flag;
 
-    /** The value for offset time, the unit is ns */
+    /** The value for offset time, the unit is nanosecond */
     uint32_t value;
 
 } sai_timeoffset_t;

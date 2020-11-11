@@ -714,6 +714,7 @@ typedef enum _sai_tunnel_attr_t
      *
      * @type sai_uint16_t
      * @flags CREATE_AND_SET
+     * @isvlan false
      * @default 0
      * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2 and SAI_TUNNEL_ATTR_DECAP_MPLS_PW_MODE == SAI_TUNNEL_MPLS_PW_MODE_TAGGED
      */

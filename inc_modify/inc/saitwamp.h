@@ -105,7 +105,7 @@ typedef enum _sai_twamp_timestamp_format_t
 } sai_twamp_timestamp_format_t;
 
 /**
- * @brief SAI Two-Way Active Measurement Protocol type of encapsulation for TWAMP
+ * @brief SAI Two-Way Active Measurement Protocol type of encapsulation
  */
 typedef enum _sai_twamp_encapsulation_type_t
 {
@@ -189,7 +189,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_SRC_IP,
 
     /**
-     * @brief Remote Dest IP address
+     * @brief Remote Destination IP address
      *
      * @type sai_ip4_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -291,7 +291,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_RATE,
 
     /**
-     * @brief Two-Way Active Measurement Protocol packet tx mode of twamp: CONTINUOUS, PACKET_NUM, PERIOD
+     * @brief Two-Way Active Measurement Protocol packet tx mode : CONTINUOUS, PACKET_NUM, PERIOD
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -310,20 +310,20 @@ typedef enum _sai_twamp_session_attr_t
 
     /**
      * @brief Two-Way Active Measurement Protocol test packet tx count, configuring by Two-Way Active Measurement Protocol send packet count of Tx
-     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_CNT,
 
     /**
      * @brief Two-Way Active Measurement Protocol test packet tx period, configuring by Two-Way Active Measurement Protocol sender period of Tx
      * Note: if tx period equal 0, sender will continue to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_PKT_TX_PKT_DURATION.
-     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_PERIOD,
 
@@ -463,7 +463,7 @@ typedef sai_status_t (*sai_get_twamp_session_attribute_fn)(
         _Inout_ sai_attribute_t *attr_list);
 
 /**
- * @brief Get Two-Way Active Measurement Protocol session statistics counters. Deprecated for backward compatibility.
+ * @brief Get Two-Way Active Measurement Protocol session statistics counters.
  *
  * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] number_of_counters Number of counters in the array
@@ -476,6 +476,24 @@ typedef sai_status_t (*sai_get_twamp_session_stats_fn)(
         _In_ sai_object_id_t twamp_session_id,
         _In_ uint32_t number_of_counters,
         _In_ const sai_stat_id_t *counter_ids,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Get Two-Way Active Measurement Protocol session statistics counters extended.
+ *
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
+ * @param[in] number_of_counters Number of counters in the array
+ * @param[in] counter_ids Specifies the array of counter ids
+ * @param[in] mode Statistics mode
+ * @param[out] counters Array of resulting counter values.
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_twamp_session_stats_ext_fn)(
+        _In_ sai_object_id_t twamp_session_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids,
+	_In_ sai_stats_mode_t mode,
         _Out_ uint64_t *counters);
 
 /**
@@ -502,6 +520,7 @@ typedef struct _sai_twamp_api_t
     sai_set_twamp_session_attribute_fn     set_twamp_session_attribute;
     sai_get_twamp_session_attribute_fn     get_twamp_session_attribute;
     sai_get_twamp_session_stats_fn         get_twamp_session_stats;
+    sai_get_twamp_session_stats_ext_fn     get_twamp_session_stats_ext;
     sai_clear_twamp_session_stats_fn       clear_twamp_session_stats;
 
 } sai_twamp_api_t;

@@ -440,13 +440,13 @@ typedef enum _sai_hostif_trap_type_t
     SAI_HOSTIF_TRAP_TYPE_CUSTOM_EXCEPTION_Y1731_APS,
 
     /**
-     * @brief Y1731 TP Direct Loss Measurement to local switch send to CPU
+     * @brief Y1731 MPLS Transport Direct Loss Measurement to local switch send to CPU
      * (default packet action is drop)
      */
     SAI_HOSTIF_TRAP_TYPE_CUSTOM_EXCEPTION_Y1731_TP_DLM,
 
     /**
-     * @brief Y1731 TP Delay Measurement/Direct Loss and Delay Measurement to local switch send to CPU
+     * @brief Y1731 MPLS Transport Delay Measurement/Direct Loss and Delay Measurement to local switch send to CPU
      * (default packet action is drop)
      */
     SAI_HOSTIF_TRAP_TYPE_CUSTOM_EXCEPTION_Y1731_TP_DM,

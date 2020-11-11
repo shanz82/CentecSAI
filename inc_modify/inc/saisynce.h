@@ -45,6 +45,7 @@ typedef enum _sai_synce_attr_t
      *
      * @type sai_uint16_t
      * @flags MANDATORY_ON_CREATE | CREATE_AND_SET
+     * @isvlan false
      */
     SAI_SYNCE_ATTR_RECOVERED_PORT,
 
@@ -53,6 +54,7 @@ typedef enum _sai_synce_attr_t
      *
      * @type sai_uint16_t
      * @flags MANDATORY_ON_CREATE | CREATE_AND_SET
+     * @isvlan false
      */
     SAI_SYNCE_ATTR_CLOCK_DIVIDER,
 

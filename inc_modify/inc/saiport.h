@@ -1293,7 +1293,7 @@ typedef enum _sai_port_attr_t
 
     /**
      * @brief Bit vector Maintenance Domain Intermediate Point Enable/Disable Level for Y1731/Ether OAM
-     * valid from bit 0 to bit 7, each bit indicate one level Maintenance Domain Intermediate Point enable/disable on the port
+     * valid from bit 0 to bit 7, each bit indicate one level
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET

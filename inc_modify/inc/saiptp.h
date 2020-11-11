@@ -184,6 +184,7 @@ typedef enum _sai_ptp_domain_attr_t
      *
      * @type sai_uint16_t
      * @flags READ_ONLY
+     * @isvlan false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_GPS_WEEK,
 
@@ -221,9 +222,7 @@ typedef enum _sai_ptp_domain_attr_t
     SAI_PTP_DOMAIN_ATTR_TAI_TIMESTAMP,
 
     /**
-     * @brief Get PTP captured timestamp from first-in-first-out
-     * it can indicate the time when sync message is sent and is filled in the Follow_Up message
-     * it can indicate the time when Pdelay_Resp is sent and is filled in the Pdelay_Resp_Follow_Up message
+     * @brief Get PTP captured timestamp when Sync and Peer delay Response packets sent out
      *
      * @type sai_captured_timespec_t
      * @flags READ_ONLY

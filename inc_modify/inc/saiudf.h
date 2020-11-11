@@ -91,6 +91,7 @@ typedef enum _sai_udf_attr_t
      *
      * @type sai_uint16_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @isvlan false
      */
     SAI_UDF_ATTR_OFFSET,
 

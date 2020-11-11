@@ -151,6 +151,7 @@ typedef enum _sai_npm_session_attr_t
      * validonly for L2 scene encap
      * @type sai_uint16_t
      * @flags CREATE_ONLY
+     * @isvlan true
      */
     SAI_NPM_SESSION_ATTR_OUTER_VLANID,
 
@@ -159,6 +160,7 @@ typedef enum _sai_npm_session_attr_t
      * validonly for L2 scene encap
      * @type sai_uint16_t
      * @flags CREATE_ONLY
+     * @isvlan true
      */
     SAI_NPM_SESSION_ATTR_INNER_VLANID,
 
@@ -418,7 +420,7 @@ typedef sai_status_t (*sai_get_npm_session_attribute_fn)(
         _Inout_ sai_attribute_t *attr_list);
 
 /**
- * @brief Get Network Performance Measurement session statistics counters. Deprecated for backward compatibility.
+ * @brief Get Network Performance Measurement session statistics counters.
  *
  * @param[in] npm_session_id Network Performance Measurement session id
  * @param[in] number_of_counters Number of counters in the array
@@ -431,6 +433,24 @@ typedef sai_status_t (*sai_get_npm_session_stats_fn)(
         _In_ sai_object_id_t npm_session_id,
         _In_ uint32_t number_of_counters,
         _In_ const sai_stat_id_t *counter_ids,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Get Network Performance Measurement session statistics counters extended.
+ *
+ * @param[in] npm_session_id Network Performance Measurement session id
+ * @param[in] number_of_counters Number of counters in the array
+ * @param[in] counter_ids Specifies the array of counter ids
+ * @param[in] mode Statistics mode
+ * @param[out] counters Array of resulting counter values.
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_npm_session_stats_ext_fn)(
+        _In_ sai_object_id_t npm_session_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids,
+	_In_ sai_stats_mode_t mode,
         _Out_ uint64_t *counters);
 
 /**
@@ -457,6 +477,7 @@ typedef struct _sai_npm_api_t
     sai_set_npm_session_attribute_fn     set_npm_session_attribute;
     sai_get_npm_session_attribute_fn     get_npm_session_attribute;
     sai_get_npm_session_stats_fn         get_npm_session_stats;
+    sai_get_npm_session_stats_ext_fn     get_npm_session_stats_ext;
     sai_clear_npm_session_stats_fn       clear_npm_session_stats;
 
 } sai_npm_api_t;

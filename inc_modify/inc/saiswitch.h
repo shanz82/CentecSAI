@@ -1865,10 +1865,10 @@ typedef enum _sai_switch_attr_t
     /**
      * @brief List of Y1731 session performance monitor offloads supported in the ASIC
      *
-     * @type sai_s32_list_t sai_y1731_session_performance_monitor_offload_type_t
+     * @type sai_s32_list_t sai_y1731_session_perf_monitor_offload_type_t
      * @flags READ_ONLY
      */
-    SAI_SWITCH_ATTR_SUPPORTED_Y1731_SESSION_PERFORMANCE_MONITOR_OFFLOAD_TYPE,
+    SAI_SWITCH_ATTR_SUPPORTED_Y1731_SESSION_PERF_MONITOR_OFFLOAD_TYPE,
 
     /**
      * @brief Apply ECN action for ECT traffic.

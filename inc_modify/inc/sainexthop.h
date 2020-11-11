@@ -272,11 +272,11 @@ typedef enum _sai_next_hop_attr_t
 
     /**
      * @brief MPLS Outsegment EXP value for pipe mode
-     * validonly SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH and SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE == SAI_OUTSEG_TTL_MODE_PIPE
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      * @default 0
+     * @condition SAI_NEXT_HOP_ATTR_TYPE == SAI_NEXT_HOP_TYPE_MPLS and SAI_NEXT_HOP_ATTR_OUTSEG_TYPE == SAI_OUTSEG_TYPE_PUSH and SAI_NEXT_HOP_ATTR_OUTSEG_TTL_MODE == SAI_OUTSEG_TTL_MODE_PIPE
      */
     SAI_NEXT_HOP_ATTR_OUTSEG_EXP_VALUE,
 

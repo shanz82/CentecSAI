@@ -49,10 +49,10 @@ typedef enum _sai_y1731_meg_type_t
     /** Y.1731 used as L2 Virtual Private Network encapsulation, based on Virtual Switch Instance */
     SAI_Y1731_MEG_TYPE_L2VPN_VPLS,
 
-    /** Y.1731 used as L2 Virtual Private Network encapsulation, based on VPWS tunnel */
+    /** Y.1731 used as L2 Virtual Private Network encapsulation, based on Virtual Private Wire Service tunnel */
     SAI_Y1731_MEG_TYPE_L2VPN_VPWS,
 
-    /** Y.1731 used as MPLS-TP based */
+    /** Y.1731 used as MPLS Transport based */
     SAI_Y1731_MEG_TYPE_MPLS_TP,
 
 } sai_y1731_meg_type_t;
@@ -161,9 +161,9 @@ typedef enum _sai_y1731_remote_mep_attr_t
 
     /**
      * @brief The HW protection next hop group id
-     * set to SAI_OBJECT_TYPE_NEXT_HOP_GROUP, only for SAI_NEXT_HOP_GROUP_TYPE_PROTECTION
+     * only for SAI_NEXT_HOP_GROUP_TYPE_PROTECTION
      * used for hardware protection switch
-     * set to SAI_NULL_OBJECT_ID to disable HW protection
+     * set to SAI_NULL_OBJECT_ID to disable
      *
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
@@ -350,7 +350,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_PORT_ID,
 
     /**
-     * @brief Y1731 session MPLS label for TP Y.1731
+     * @brief Y1731 session MPLS label for Transport Y.1731
      *
      * validonly SAI_Y1731_MEG_ATTR_TYPE == SAI_Y1731_MEG_TYPE_MPLS_TP
      *
@@ -457,7 +457,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_LOCAL_RDI,
 
     /**
-     * @brief TP Y1731 section OAM router interface id
+     * @brief Transport Y1731 section OAM router interface id
      * validonly SAI_Y1731_MEG_ATTR_TYPE == SAI_Y1731_MEG_TYPE_MPLS_TP
      *
      * @type sai_object_id_t
@@ -467,7 +467,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_TP_ROUTER_INTERFACE_ID,
 
     /**
-     * @brief TP Y.1731 without gal, by default, TP Y.1731 for Label Switched Path with gal, TP Y.1731 for Pseudo wire without gal
+     * @brief Transport Y.1731 without gal, by default, Transport Y.1731 for Label Switched Path with gal, Transport Y.1731 for Pseudo wire without gal
      * validonly SAI_Y1731_MEG_ATTR_TYPE == SAI_Y1731_MEG_TYPE_MPLS_TP
      *
      * @type bool
@@ -476,7 +476,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_TP_WITHOUT_GAL,
 
     /**
-     * @brief Transmit TP Y.1731 MPLS label TTL
+     * @brief Transmit Transport Y.1731 MPLS label TTL
      * validonly SAI_Y1731_MEG_ATTR_TYPE == SAI_Y1731_MEG_TYPE_MPLS_TP
      *
      * @type sai_uint8_t
@@ -485,7 +485,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_TTL,
 
     /**
-     * @brief Transmit TP Y.1731 MPLS label exp or Vlan Cos
+     * @brief Transmit Transport Y.1731 MPLS label exp or Vlan Cos
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      */
@@ -517,24 +517,24 @@ typedef enum _sai_y1731_session_attr_t
 } sai_y1731_session_attr_t;
 
 /**
- * @brief Y1731 Session Loss Measurement stats IDs in sai_get_y1731_session_lm_stats_fn() call
+ * @brief Y1731 Session Loss Measurement stats IDs in sai_get_y1731_session_stats_fn() call
  * Used in Dual-ended Loss Measurement with Continuity Check Message
  */
-typedef enum _sai_y1731_session_lm_stat_t
+typedef enum _sai_y1731_session_stat_t
 {
     /** Counter in last received Continuity Check Message */
-    SAI_Y1731_SESSION_LM_STAT_TX_FCF,
+    SAI_Y1731_SESSION_STAT_TX_FCF,
 
     /** Counter in last received Continuity Check Message */
-    SAI_Y1731_SESSION_LM_STAT_RX_FCB,
+    SAI_Y1731_SESSION_STAT_RX_FCB,
 
     /** Counter in last received Continuity Check Message */
-    SAI_Y1731_SESSION_LM_STAT_TX_FCB,
+    SAI_Y1731_SESSION_STAT_TX_FCB,
 
     /** Counter for in-profile data frames received from the peer Maintenance End Point in local stats when receive last Continuity Check Message */
-    SAI_Y1731_SESSION_LM_STAT_RX_FCL
+    SAI_Y1731_SESSION_STAT_RX_FCL
 
-} sai_y1731_session_lm_stat_t;
+} sai_y1731_session_stat_t;
 
 /**
  * @brief SAI notification event type of Y1731 session
@@ -761,16 +761,48 @@ typedef sai_status_t (*sai_get_y1731_remote_mep_attribute_fn)(
  *
  * @param[in] y1731_session_id Y1731 session id
  * @param[in] number_of_counters Number of lm_stats in the array
- * @param[in] lm_stats_ids Specifies the array of Loss Measurement stats ids
- * @param[out] lm_stats Array of resulting Loss Measurement stats values.
+ * @param[in] counter_ids Specifies the array of Loss Measurement stats ids
+ * @param[out] counters Array of resulting Loss Measurement stats values.
  *
  * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
 typedef sai_status_t (*sai_get_y1731_session_stats_fn)(
         _In_ sai_object_id_t y1731_session_id,
         _In_ uint32_t number_of_counters,
-        _In_ const sai_stat_id_t *lm_stats_ids,
-        _Out_ uint64_t *lm_stats);
+        _In_ const sai_stat_id_t *counter_ids,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Get Y.1731 session statistics counters extended.
+ *
+ * @param[in] y1731_session_id Y1731 session id
+ * @param[in] number_of_counters Number of lm_stats in the array
+ * @param[in] counter_ids Specifies the array of Loss Measurement stats ids
+ * @param[in] mode Statistics mode
+ * @param[out] counters Array of resulting Loss Measurement stats values.
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_y1731_session_stats_ext_fn)(
+        _In_ sai_object_id_t y1731_session_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids,
+        _In_ sai_stats_mode_t mode,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Clear Y.1731 session statistics counters.
+ *
+ * @param[in] y1731_session_id Y1731 session id
+ * @param[in] number_of_counters Number of lm_stats in the array
+ * @param[in] counter_ids Specifies the array of Loss Measurement stats ids
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_clear_y1731_session_stats_fn)(
+        _In_ sai_object_id_t y1731_session_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids);
 
 /**
  * @brief Y.1731 session state change notification
@@ -806,7 +838,9 @@ typedef struct _sai_y1731_api_t
     sai_set_y1731_remote_mep_attribute_fn  set_y1731_remote_mep_attribute;
     sai_get_y1731_remote_mep_attribute_fn  get_y1731_remote_mep_attribute;
 
-    sai_get_y1731_session_lm_stats_fn      get_y1731_session_lm_stats;
+    sai_get_y1731_session_stats_fn         get_y1731_session_stats;
+    sai_get_y1731_session_stats_ext_fn     get_y1731_session_stats_ext;
+    sai_clear_y1731_session_stats_fn       clear_y1731_session_stats;
 
 } sai_y1731_api_t;
 
