@@ -1250,7 +1250,7 @@ typedef enum _sai_port_attr_t
     SAI_PORT_ATTR_PTP_EGRESS_ASYMMETRY_DELAY,
 
     /**
-     * @brief Path delay for P2PTC, it is the link delay between the device and the linked device
+     * @brief Path delay for Peer-to-peer Transparent Clock, it is the link delay between the device and the linked device
      * @type sai_uint64_t
      * @flags CREATE_AND_SET
      */
@@ -1283,7 +1283,7 @@ typedef enum _sai_port_attr_t
     SAI_PORT_ATTR_Y1731_ENABLE,
 
     /**
-     * @brief Enable/Disable Y1731/Ether OAM LM function
+     * @brief Enable/Disable Y1731/Ether OAM Loss Measurement function
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -1292,8 +1292,8 @@ typedef enum _sai_port_attr_t
     SAI_PORT_ATTR_Y1731_LM_ENABLE,
 
     /**
-     * @brief Bit vector MIP Enable/Disable Level for Y1731/Ether OAM
-     * valid from bit 0 to bit 7, each bit indicate one level mip enable/disable on the port
+     * @brief Bit vector Maintenance Domain Intermediate Point Enable/Disable Level for Y1731/Ether OAM
+     * valid from bit 0 to bit 7, each bit indicate one level Maintenance Domain Intermediate Point enable/disable on the port
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
@@ -1303,8 +1303,8 @@ typedef enum _sai_port_attr_t
 
     /**
      * @brief MAC address on the port
-     *        this MAC address can be use to identify received Unicast Y.1731 OAM PDU to the port
-     *        also it is used as MACSA when transmit Y.1731 OAM PDU
+     * it can be use to identify received Unicast Y.1731 OAM packet to the port
+     * also it is used as source MAC address when transmit Y.1731 OAM packet
      *
      * @type sai_mac_t
      * @flags CREATE_AND_SET
@@ -1886,10 +1886,10 @@ typedef enum _sai_port_stat_t
 typedef enum _sai_signal_degrade_status_t
 {
     /** Detect */
-    SAI_PORT_SD_STATUS_DETECT,
+    SAI_SIGNAL_DEGRADE_STATUS_DETECT,
 
     /** Recover */
-    SAI_PORT_SD_STATUS_RECOVER,
+    SAI_SIGNAL_DEGRADE_STATUS_RECOVER,
 
 } sai_signal_degrade_status_t;
 
@@ -1905,7 +1905,7 @@ typedef struct _sai_port_sd_notification_t
      */
     sai_object_id_t port_id;
 
-    /** Port sd state */
+    /** Port signal degrade state */
     sai_signal_degrade_status_t sd_status;
 
 } sai_port_sd_notification_t;
@@ -1916,7 +1916,7 @@ typedef struct _sai_port_sd_notification_t
  * @count data[count]
  *
  * @param[in] count Number of notifications
- * @param[in] data Array of port sd status
+ * @param[in] data Array of port signal degrade status
  */
 typedef void (*sai_signal_degrade_event_notification_fn)(
         _In_ uint32_t count,

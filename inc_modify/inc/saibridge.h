@@ -85,7 +85,7 @@ typedef enum _sai_bridge_port_type_t
     /** Bridge tunnel port */
     SAI_BRIDGE_PORT_TYPE_TUNNEL,
 
-    /** Bridge FRR port */
+    /** Bridge Fast Reroute port */
     SAI_BRIDGE_PORT_TYPE_FRR,
 
     /** Bridge Double Vlan port */
@@ -199,13 +199,11 @@ typedef enum _sai_bridge_port_attr_t
 
     /**
      * @brief Associated bridge id
-     * condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT
-     * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_1D_ROUTER
-     * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_TUNNEL
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_AND_SET
      * @objects SAI_OBJECT_TYPE_BRIDGE
+     * @condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT or SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_1D_ROUTER or SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_TUNNEL
      */
     SAI_BRIDGE_PORT_ATTR_BRIDGE_ID,
 
@@ -302,9 +300,9 @@ typedef enum _sai_bridge_port_attr_t
     SAI_BRIDGE_PORT_ATTR_CROSS_CONNECT_BRIDGE_PORT = SAI_BRIDGE_PORT_ATTR_CUSTOM_RANGE_START,
 
     /**
-     * @brief Enable oam for sub port
+     * @brief Enable OAM for sub port
      *
-     * for VPLS/VPWS OAM
+     * for Virtual Private LAN Service/Virtual Private Wire Service OAM
      * validonly SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT
      * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_TUNNEL
      *
@@ -315,9 +313,9 @@ typedef enum _sai_bridge_port_attr_t
     SAI_BRIDGE_PORT_ATTR_SUB_TUNNEL_PORT_OAM_ENABLE,
 
     /**
-     * @brief FRR nexthop group object ID
+     * @brief Fast Reroute nexthop group object ID
      *
-     * for VPLS FRR Decapsulation
+     * for Virtual Private LAN Service Fast Reroute Decapsulation
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -330,7 +328,7 @@ typedef enum _sai_bridge_port_attr_t
     /**
      * @brief Policer id for sub port/tunnel port
      *
-     * for VPLS/VPWS
+     * for Virtual Private LAN Service/Virtual Private Wire Service
      * set to NULL means disable policer on bridge port
      *
      * validonly SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT
@@ -353,6 +351,7 @@ typedef enum _sai_bridge_port_attr_t
      *
      * @type sai_uint16_t
      * @flags CREATE_AND_SET
+     * @isvlan false
      * @default 0
      */
     SAI_BRIDGE_PORT_ATTR_SUB_TUNNEL_PORT_SERVICE_ID,
@@ -362,6 +361,7 @@ typedef enum _sai_bridge_port_attr_t
      *
      * condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT
      * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_DOUBLE_VLAN_SUB_PORT
+     *
      * @type sai_uint16_t
      * @flags CREATE_ONLY
      * @isvlan true
@@ -369,24 +369,21 @@ typedef enum _sai_bridge_port_attr_t
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_ID,
 
     /**
-     * @brief Outgoing Service Vlan CoS mode
-     * condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT
-     * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_DOUBLE_VLAN_SUB_PORT
+     * @brief Outgoing Service Vlan Class of Service mode
      *
      * @type sai_bridge_port_outgoing_service_vlan_cos_mode_t
      * @flags CREATE_ONLY
-     * @isvlan true
+     * @condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT or
+     * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_DOUBLE_VLAN_SUB_PORT
      */
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE,
 
     /**
-     * @brief Outgoing Service Vlan CoS
-     * condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT, SAI_BRIDGE_PORT_TYPE_DOUBLE_VLAN_SUB_PORT
-     * and SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE == SAI_BRIDGE_PORT_OUTGOING_SERVICE_VLAN_COS_MODE_ASSIGN
+     * @brief Outgoing Service Vlan Class of Service
      *
      * @type sai_uint8_t
      * @flags CREATE_ONLY
-     * @isvlan true
+     * @condition SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE == SAI_BRIDGE_PORT_OUTGOING_SERVICE_VLAN_COS_MODE_ASSIGN
      */
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS,
 

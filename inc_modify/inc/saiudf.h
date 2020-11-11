@@ -208,7 +208,7 @@ typedef enum _sai_udf_match_attr_t
     SAI_UDF_MATCH_ATTR_CUSTOM_L4_SRC_PORT,
 
     /**
-     * @brief UDF L4 dest port match rule
+     * @brief UDF L4 destination port match rule
      *
      * Default to None
      *

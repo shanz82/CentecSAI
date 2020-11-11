@@ -86,27 +86,27 @@ typedef enum _sai_inseg_entry_pop_qos_mode_t
 } sai_inseg_entry_pop_qos_mode_t;
 
 /**
- * @brief MPLS Insegment configured role
+ * @brief MPLS in-segment configured role
  */
 typedef enum _sai_inseg_entry_configured_role_t
 {
-    /** MPLS Insegment is primary */
+    /** MPLS in-segment is primary */
     SAI_INSEG_ENTRY_CONFIGURED_ROLE_PRIMARY,
 
-    /** MPLS Insegment is standby */
+    /** MPLS in-segment is standby */
     SAI_INSEG_ENTRY_CONFIGURED_ROLE_STANDBY,
 
 } sai_inseg_entry_configured_role_t;
 
 /**
- * @brief MPLS Insegment observed role
+ * @brief MPLS in-segment observed role
  */
 typedef enum _sai_inseg_entry_observed_role_t
 {
-    /** MPLS Insegment is active */
+    /** MPLS in-segment is active */
     SAI_INSEG_ENTRY_OBSERVED_ROLE_ACTIVE,
 
-    /** MPLS Insegment is inactive */
+    /** MPLS in-segment is inactive */
     SAI_INSEG_ENTRY_OBSERVED_ROLE_INACTIVE,
 
 } sai_inseg_entry_observed_role_t;
@@ -160,7 +160,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_NEXT_HOP_ID,
 
     /**
-     * @brief Define PSC type for a label.
+     * @brief Define Protection State Coordination type for a label.
      *
      * Defines how to infer both TC and COLOR
      *
@@ -174,7 +174,7 @@ typedef enum _sai_inseg_entry_attr_t
      * @brief TC for a label.
      *
      * Associate TC by a label (override TC provided by QOS MAP)
-     * Mainly used for L-LSP tunnels, where label infers TC and EXP infers COLOR
+     * Mainly used for L-Label Switched Path tunnels, where label infers TC and EXP infers COLOR
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
@@ -187,7 +187,7 @@ typedef enum _sai_inseg_entry_attr_t
      * @brief Enable EXP -> TC MAP on label.
      *
      * Associate TC by a QOS MAP
-     * Mainly used for E-LSP tunnels, where EXP infers both TC and COLOR
+     * Mainly used for E-Label Switched Path tunnels, where EXP infers both TC and COLOR
      * Overrides SAI_SWITCH_ATTR_QOS_MPLS_EXP_TO_TC_MAP and SAI_PORT_ATTR_QOS_MPLS_EXP_TO_TC_MAP
      *
      * @type sai_object_id_t
@@ -214,7 +214,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_MPLS_EXP_TO_COLOR_MAP,
 
     /**
-     * @brief Define TTL setting for PHP or POP
+     * @brief Define TTL setting for Penultimate hop popping or POP
      *
      * @type sai_inseg_entry_pop_ttl_mode_t
      * @flags CREATE_AND_SET
@@ -223,7 +223,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_POP_TTL_MODE,
 
     /**
-     * @brief Define QOS setting for PHP or POP
+     * @brief Define QOS setting for Penultimate hop popping or POP
      *
      * @type sai_inseg_entry_pop_qos_mode_t
      * @flags CREATE_AND_SET
@@ -251,7 +251,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_DECAP_TUNNEL_ID = SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_START,
 
     /**
-     * @brief FRR nexthop group
+     * @brief Fast Reroute nexthop group
      *
      * @type sai_object_id_t
      * @flags CREATE_ONLY
@@ -262,7 +262,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP,
 
     /**
-     * @brief FRR configured Role in packet receiving direction
+     * @brief Fast Reroute configured Role in packet receiving direction
      * when SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
      * @type sai_inseg_entry_configured_role_t
@@ -272,7 +272,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_FRR_CONFIGURED_ROLE,
 
     /**
-     * @brief FRR observed Role in packet receiving direction
+     * @brief Fast Reroute observed Role in packet receiving direction
      *
      * valid only SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
@@ -282,7 +282,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_FRR_OBSERVED_ROLE,
 
     /**
-     * @brief FRR observed Role inactive discard in receiving direction
+     * @brief Fast Reroute observed Role inactive discard in receiving direction
      * validonly SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
      * @type bool
@@ -305,9 +305,9 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_COUNTER_ID,
 
     /**
-     * @brief Attach/Detach policer to MPLS insegment
+     * @brief Attach/Detach policer to MPLS in-segment
      *
-     * Set policer id = #SAI_NULL_OBJECT_ID to disable policer on MPLS insegment.
+     * Set policer id = #SAI_NULL_OBJECT_ID to disable policer on MPLS in-segment.
      *
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
@@ -318,7 +318,7 @@ typedef enum _sai_inseg_entry_attr_t
     SAI_INSEG_ENTRY_ATTR_POLICER_ID,
 
     /**
-     * @brief Service id for MPLS insegment entry
+     * @brief Service id for MPLS in-segment entry
      *
      * used for H-QOS, set to service schedule group service id
      * set to 0 means disable H-QOS on MPLS label, usually used in PW label

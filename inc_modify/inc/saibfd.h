@@ -86,7 +86,7 @@ typedef enum _sai_bfd_encapsulation_type_t
     SAI_BFD_ENCAPSULATION_TYPE_L3_GRE_TUNNEL,
 
     /**
-     * @brief MPLS Encapsulation | L2 Ethernet header | MPLS header (| ACH header) (| IP header | UDP header) | Original BFD packet
+     * @brief MPLS Encapsulation | L2 Ethernet header | MPLS header (| Associated Channel Header) (| IP header | UDP header) | Original BFD packet
      */
     SAI_BFD_ENCAPSULATION_TYPE_MPLS,
 
@@ -102,10 +102,10 @@ typedef enum _sai_bfd_encapsulation_type_t
  */
 typedef enum _sai_bfd_mpls_type_t
 {
-    /** Normal mpls BFD, include LSP/PW */
+    /** Normal MPLS BFD, include Label Switched Path/Pseudo wire */
     SAI_BFD_MPLS_TYPE_NORMAL,
 
-    /** MPLS TP BFD */
+    /** MPLS transport BFD */
     SAI_BFD_MPLS_TYPE_TP,
 
 } sai_bfd_mpls_type_t;
@@ -147,20 +147,20 @@ typedef struct _sai_bfd_session_state_notification_t
 } sai_bfd_session_state_notification_t;
 
 /**
- * @brief Defines the ACH channel type of BFD encapsulation
+ * @brief Defines the Associated Channel Header channel type of BFD encapsulation
  */
 typedef enum _sai_bfd_ach_channel_type_t
 {
-    /** BFD ACH channel type without IP/UDP achType = 0x0007 */
+    /** BFD Associated Channel Header channel type without IP/UDP Associated Channel Header Type = 0x0007 */
     SAI_BFD_ACH_CHANNEL_TYPE_VCCV_RAW,
 
-    /** BFD ACH channel type with IPv4/UDP achType = 0x0021 */
+    /** BFD Associated Channel Header channel type with IPv4/UDP Associated Channel Header Type = 0x0021 */
     SAI_BFD_ACH_CHANNEL_TYPE_VCCV_IPV4,
 
-    /** BFD ACH channel type with IPv6/UDP achType = 0x0057 */
+    /** BFD Associated Channel Header channel type with IPv6/UDP Associated Channel Header Type = 0x0057 */
     SAI_BFD_ACH_CHANNEL_TYPE_VCCV_IPV6,
 
-    /** BFD ACH channel type TP CC achType = 0x0022, CV achType = 0x0023 */
+    /** BFD Associated Channel Header channel type MPLS transport CC Associated Channel Header Type = 0x0022, CV Associated Channel Header Type = 0x0023 */
     SAI_BFD_ACH_CHANNEL_TYPE_TP,
 
 } sai_bfd_ach_channel_type_t;
@@ -552,7 +552,7 @@ typedef enum _sai_bfd_session_attr_t
     SAI_BFD_SESSION_ATTR_MPLS_ENCAP_BFD_TYPE,
 
     /**
-     * @brief BFD ACH valid
+     * @brief BFD Associated Channel Header valid
      *
      * @type bool
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -561,7 +561,7 @@ typedef enum _sai_bfd_session_attr_t
     SAI_BFD_SESSION_ATTR_ACH_HEADER_VALID,
 
     /**
-     * @brief BFD ACH channel type
+     * @brief BFD Associated Channel Header channel type
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -575,9 +575,9 @@ typedef enum _sai_bfd_session_attr_t
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_MPLS_IN_LABEL,
-    
+
     /**
-     * @brief transmit MPLS label ttl
+     * @brief Transmit MPLS label TTL
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
@@ -585,7 +585,7 @@ typedef enum _sai_bfd_session_attr_t
     SAI_BFD_SESSION_ATTR_MPLS_TTL,
 
     /**
-     * @brief transmit MPLS label exp
+     * @brief Transmit MPLS label exp
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
@@ -593,21 +593,21 @@ typedef enum _sai_bfd_session_attr_t
     SAI_BFD_SESSION_ATTR_MPLS_EXP,
 
     /**
-     * @brief TP BFD CV enable
+     * @brief MPLS transport BFD CV enable
      * @type bool
      * @flags CREATE_AND_SET
      */
     SAI_BFD_SESSION_ATTR_TP_CV_ENABLE,
 
     /**
-     * @brief TP BFD CV Source MEP-ID char[SAI_BFD_CV_SIZE]
+     * @brief MPLS transport BFD CV Source Maintenance End Point-ID char[SAI_BFD_CV_SIZE]
      * @type char
      * @flags CREATE_ONLY
      */
     SAI_BFD_SESSION_ATTR_TP_CV_SRC_MEP_ID,
 
     /**
-     * @brief TP BFD section OAM router interface id
+     * @brief MPLS transport BFD section OAM router interface id
      *
      * @type sai_object_id_t
      * @flags CREATE_ONLY
@@ -616,7 +616,7 @@ typedef enum _sai_bfd_session_attr_t
     SAI_BFD_SESSION_ATTR_TP_ROUTER_INTERFACE_ID,
 
     /**
-     * @brief TP BFD without gal, by default, BFD for lsp with gal, BFD for pw without gal
+     * @brief MPLS transport BFD without gal, by default, BFD for Label Switched Path with gal, BFD for Pseudo wire without gal
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -636,9 +636,8 @@ typedef enum _sai_bfd_session_attr_t
 
     /**
      * @brief The HW protection next hop group id
-     * set to SAI_OBJECT_TYPE_NEXT_HOP_GROUP, only for SAI_NEXT_HOP_GROUP_TYPE_PROTECTION
-     * used for hardware protection switch
-     * set to SAI_NULL_OBJECT_ID to disable HW protection
+     * only for SAI_NEXT_HOP_GROUP_TYPE_PROTECTION, used for hardware protection switch
+     * SAI_NULL_OBJECT_ID to disable
      *
      * @type sai_object_id_t
      * @flags CREATE_AND_SET

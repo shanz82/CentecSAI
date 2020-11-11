@@ -119,8 +119,8 @@ typedef enum _sai_scheduler_group_attr_t
      * @brief Scheduler group service id
      *
      * when set, this group is used for dedicate service
-     * for example, vpls/vpws AC bridge port/PW tunnel port, this service id should also be set in
-     * vpls/vpws AC bridge port/PW tunnel port, and queues for services
+     * for example, Virtual Private LAN Service/Virtual Private Wire Service AC bridge port/Pseudo wire tunnel port, this service id should also be set in
+     * Virtual Private LAN Service/Virtual Private Wire Service AC bridge port/Pseudo wire tunnel port, and queues for services
      *
      * when set to 0, it's a normal scheduler group
      *

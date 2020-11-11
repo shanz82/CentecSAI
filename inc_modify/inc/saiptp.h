@@ -19,7 +19,7 @@
  *
  * @file    saiptp.h
  *
- * @brief   This module defines SAI PTP 
+ * @brief   This module defines SAI PTP
  */
 
 #if !defined (__SAIPTP_H_)
@@ -27,40 +27,40 @@
 
 #include <saitypes.h>
 
-#define TOD_INTF_DISABLE 2
+#define SAI_TOD_INTF_DISABLE 2
 
 /**
  * @brief Define PTP device type
  */
 typedef enum _sai_ptp_device_type_t
 {
-    /** Blind for PTP message,forward it as one normal packet*/
-    SAI_PTP_DEVICE_NONE,
+    /** Blind for PTP message,forward it as one normal packet */
+    SAI_PTP_DEVICE_TYPE_NONE,
 
     /** Ordinary clock device */
-    SAI_PTP_DEVICE_OC,
+    SAI_PTP_DEVICE_TYPE_OC,
 
     /** Boundary clock device */
-    SAI_PTP_DEVICE_BC,
+    SAI_PTP_DEVICE_TYPE_BC,
 
     /** End-to-end transparent clock device */
-    SAI_PTP_DEVICE_E2E_TC,
+    SAI_PTP_DEVICE_TYPE_E2E_TC,
 
-    /** Peer-to-peer transparent clock device*/
-    SAI_PTP_DEVICE_P2P_TC,
+    /** Peer-to-peer transparent clock device */
+    SAI_PTP_DEVICE_TYPE_P2P_TC,
 
 } sai_ptp_device_type_t;
 
 /**
- * @brief Attribute data for 
+ * @brief Attribute data for
  */
 typedef enum _sai_ptp_enable_based_type_t
 {
     /** PTP enable based on vlan */
-    SAI_PTP_ENABLE_BASED_ON_VLAN,
+    SAI_PTP_ENABLE_BASED_TYPE_VLAN,
 
     /** PTP enable based on port */
-    SAI_PTP_ENABLE_BASED_ON_PORT,
+    SAI_PTP_ENABLE_BASED_TYPE_PORT,
 
 } sai_ptp_enable_based_type_t;
 
@@ -69,16 +69,16 @@ typedef enum _sai_ptp_enable_based_type_t
  */
 typedef enum _sai_ptp_tod_interface_format_type_t
 {
-    /** PTP tod interface format selects CCSA YD/T 2375-2011 as the standard*/
-    SAI_PTP_TOD_INTERFACE_FORMAT_CCSA_YDT2375,
+    /** PTP time of day interface format selects China Communications Standards Association YD/T 2375-2011 as the standard */
+    SAI_PTP_TOD_INTERFACE_FORMAT_TYPE_CCSA_YDT2375,
 
-    /** PTP tod interface format selects ITU.T G.703 as the standard*/
-    SAI_PTP_TOD_INTERFACE_FORMAT_ITUT_G703,
+    /** PTP time of day interface format selects Telecommunication Standardization Sector of the International Telecommunications Union G.703 as the standard */
+    SAI_PTP_TOD_INTERFACE_FORMAT_TYPE_ITUT_G703,
 
-    /** User define the ptp tod interface format */
-    SAI_PTP_TOD_INTERFACE_FORMAT_USER_DEFINE,
+    /** User define the PTP time of day interface format */
+    SAI_PTP_TOD_INTERFACE_FORMAT_TYPE_USER_DEFINE,
 
-}sai_ptp_tod_interface_format_type_t;
+} sai_ptp_tod_interface_format_type_t;
 
 /**
  * @brief Attribute data for
@@ -86,13 +86,13 @@ typedef enum _sai_ptp_tod_interface_format_type_t
 typedef enum _sai_ptp_tod_intf_mode_t
 {
     /** Interface input mode */
-    SAI_PTP_TOD_INTERFACE_INPUT,
+    SAI_PTP_TOD_INTF_MODE_INPUT,
 
     /** Interface output mode */
-    SAI_PTP_TOD_INTERFACE_OUTPUT,
+    SAI_PTP_TOD_INTF_MODE_OUTPUT,
 
     /** Interface disable */
-    SAI_PTP_TOD_INTERFACE_DISABLE,
+    SAI_PTP_TOD_INTF_MODE_DISABLE,
 
 } sai_ptp_tod_intf_mode_t;
 
@@ -152,43 +152,45 @@ typedef enum _sai_ptp_domain_attr_t
 
     /**
      * @brief Leap seconds between GPS and UTC, set attr only support output mode, get attr support output and input mode
-     * @condition  SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      *
      * @type sai_int8_t
      * @flags CREATE_AND_SET
+     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_LEAP_SECOND,
 
     /**
      * @brief Tod interface code 1PPS status <0-0xFF>, set attr only support output mode, get attr support output and input mode
-     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      *
-     * @type  sai_uint8_t
+     * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_PPS_STATUS,
 
     /**
-     * @brief Tod interface code 1PPS accuracy, set attr only support output mode, get attr support output and input mode  
-     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
+     * @brief Tod interface code 1PPS accuracy, set attr only support output mode, get attr support output and input mode
      *
-     * @type  sai_uint8_t
+     * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_PPS_ACCURACY,
 
     /**
      * @brief Tod interface  GPS week, used for input mode with get attr
-     * condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_MODE == SAI_PTP_TOD_INTERFACE_INPUT
-     * @type  sai_uint16_t
+     *
+     * condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_MODE == SAI_PTP_TOD_INTF_MODE_INPUT
+     *
+     * @type sai_uint16_t
      * @flags READ_ONLY
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_GPS_WEEK,
 
     /**
      * @brief Tod interface GPS Second time of week, used for input mode with get attr
-     * condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_MODE== SAI_PTP_TOD_INTERFACE_INPUT
-     * @type  sai_uint32_t
+     * condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_MODE== SAI_PTP_TOD_INTF_MODE_INPUT
+     * @type sai_uint32_t
      * @flags READ_ONLY
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_GPS_SECOND_OF_WEEK,
@@ -203,7 +205,7 @@ typedef enum _sai_ptp_domain_attr_t
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_MODE,
 
     /**
-     * @brief Enable the tod interface 
+     * @brief Enable the time of day interface
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -211,19 +213,19 @@ typedef enum _sai_ptp_domain_attr_t
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE,
 
     /**
-     * @brief get TAI timestamp
+     * @brief Get International Atomic Time timestamp
      *
-     * @type  sai_timespec_t
+     * @type sai_timespec_t
      * @flags READ_ONLY
      */
     SAI_PTP_DOMAIN_ATTR_TAI_TIMESTAMP,
 
     /**
-     * @brief Get ptp captured timestamp from fifo 
+     * @brief Get PTP captured timestamp from first-in-first-out
      * it can indicate the time when sync message is sent and is filled in the Follow_Up message
      * it can indicate the time when Pdelay_Resp is sent and is filled in the Pdelay_Resp_Follow_Up message
      *
-     * @type  sai_captured_timespec_t
+     * @type sai_captured_timespec_t
      * @flags READ_ONLY
      */
     SAI_PTP_DOMAIN_ATTR_CAPTURED_TIMESTAMP,
@@ -242,9 +244,9 @@ typedef enum _sai_ptp_domain_attr_t
 } sai_ptp_domain_attr_t;
 
 /**
- * @brief Create ptp domain
+ * @brief Create PTP domain
  *
- * @param[out] ptp_domain_id ptp domain id
+ * @param[out] ptp_domain_id PTP domain id
  * @param[in] switch_id Switch id
  * @param[in] attr_count Number of attributes
  * @param[in] attr_list Array of attributes
@@ -258,9 +260,9 @@ typedef sai_status_t (*sai_create_ptp_domain_fn)(
         _In_ const sai_attribute_t *attr_list);
 
 /**
- * @brief Remove ptp domain
+ * @brief Remove PTP domain
  *
- * @param[in] ptp_domain_id ptp domain id
+ * @param[in] ptp_domain_id PTP domain id
  *
  * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
@@ -268,10 +270,10 @@ typedef sai_status_t (*sai_remove_ptp_domain_fn)(
         _In_ sai_object_id_t ptp_domain_id);
 
 /**
- * @brief Set ptp domain attribute
+ * @brief Set PTP domain attribute
  *
- * @param[in] ptp_domain_id ptp domain id
- * @param[in] attr attributes
+ * @param[in] ptp_domain_id PTP domain id
+ * @param[in] attr Attributes
  *
  * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
@@ -280,9 +282,9 @@ typedef sai_status_t (*sai_set_ptp_domain_attribute_fn)(
         _In_ const sai_attribute_t *attr);
 
 /**
- * @brief Get ptp domain attribute
+ * @brief Get PTP domain attribute
  *
- * @param[in] ptp_domain_id ptp domain id
+ * @param[in] ptp_domain_id PTP domain id
  * @param[in] attr_count Number of attributes
  * @param[inout] attr_list Array of attributes
  *
@@ -297,7 +299,7 @@ typedef sai_status_t (*sai_get_ptp_domain_attribute_fn)(
  * @brief PTP API
  */
 typedef struct _sai_ptp_api_t
-{ 
+{
     sai_create_ptp_domain_fn               create_ptp_domain;
     sai_remove_ptp_domain_fn               remove_ptp_domain;
     sai_set_ptp_domain_attribute_fn        set_ptp_domain_attribute;

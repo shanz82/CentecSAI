@@ -227,7 +227,6 @@ typedef enum _sai_nat_entry_attr_t
      */
     SAI_NAT_ENTRY_ATTR_CUSTOM_DNAT_REROUTE = SAI_NAT_ENTRY_ATTR_CUSTOM_RANGE_START,
 
-
     /** End of custom range base */
     SAI_NAT_ENTRY_ATTR_CUSTOM_RANGE_END
 
@@ -334,7 +333,7 @@ typedef struct _sai_nat_entry_t
     sai_object_id_t vr_id;
 
     /**
-     * @brief NAT entry tyoe
+     * @brief NAT entry type
      */
     sai_nat_type_t nat_type;
 

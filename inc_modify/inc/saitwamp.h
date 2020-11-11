@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Centec Open Technologies, Inc.
+ * Copyright (c) 2020 Microsoft Open Technologies, Inc.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License"); you may
  *    not use this file except in compliance with the License. You may obtain
@@ -13,8 +13,9 @@
  *    See the Apache Version 2.0 License for specific language governing
  *    permissions and limitations under the License.
  *
- *    Centec would like to thank the following companies for their review and
- *    assistance with these files:
+ *    Microsoft would like to thank the following companies for their review and
+ *    assistance with these files: Intel Corporation, Mellanox Technologies Ltd,
+ *    Dell Products, L.P., Facebook, Inc., Marvell International Ltd.
  *
  * @file    saitwamp.h
  *
@@ -29,22 +30,23 @@
 /**
  * @defgroup SAITWAMP SAI - TWAMP specific public APIs and data structures
  *
+ * @{
  */
 
 /**
- * @brief SAI TWAMP session authen mode,
+ * @brief SAI TWAMP session authentication mode,
  * there are three modes: unauthenticated, authenticated, and encrypted.
  */
 typedef enum _sai_twamp_session_auth_mode_t
 {
     /** Session session unauthenticated mode */
-    SAI_TWAMP_SESSION_MODE_AUTHENTICATED = 0,
+    SAI_TWAMP_SESSION_AUTH_MODE_AUTHENTICATED = 0,
 
     /** Session session authenticated mode */
-    SAI_TWAMP_SESSION_MODE_UNAUTHENTICATED,
+    SAI_TWAMP_SESSION_AUTH_MODE_UNAUTHENTICATED,
 
     /** Session session encrypted mode */
-    SAI_TWAMP_SESSION_MODE_ENCRYPTED
+    SAI_TWAMP_SESSION_AUTH_MODE_ENCRYPTED
 
 } sai_twamp_session_auth_mode_t;
 
@@ -54,95 +56,51 @@ typedef enum _sai_twamp_session_auth_mode_t
 typedef enum _sai_twamp_session_role_t
 {
     /** Session enable ingress port */
-    SAI_TWAMP_SESSION_SENDER = 0,
+    SAI_TWAMP_SESSION_ROLE_SENDER = 0,
 
     /** Session enable egress port */
-    SAI_TWAMP_SESSION_REFLECTOR
+    SAI_TWAMP_SESSION_ROLE_REFLECTOR
 
 } sai_twamp_session_role_t;
 
-/**
- * @brief SAI type of twamp encapsulation for TWAMP
- * 0                   1                   2                   3
- * 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                        Sequence Number                        |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                          Timestamp                            |
- * |                                                               |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |         Error Estimate        |           MBZ                 |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                          Receive Timestamp                    |
- * |                                                               |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                        Sender Sequence Number                 |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                      Sender Timestamp                         |
- * |                                                               |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |      Sender Error Estimate    |           MBZ                 |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |  Sender TTL   |                                               |
- * +-+-+-+-+-+-+-+-+                                               +
- * |                                                               |
- * .                                                               .
- * .                         Packet Padding                        .
- * .                                                               .
- * |                                                               |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- *
- * Note that all timestamps have the same format as OWAMP [RFC4656] as
- * follows:
- *
- *  0                   1                   2                   3
- *  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                   Integer part of seconds                     |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |                 Fractional part of seconds                    |
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- */
 typedef enum _sai_twamp_mode_type_t
 {
     /**
-     * @brief Reflector will record session stats when enabling twamp full moode 
+     * @brief Reflector will record session stats when enabling twamp full mode 
      */
-    SAI_TWAMP_MODE_TWAMP_FULL = 0,
+    SAI_TWAMP_MODE_TYPE_FULL = 0,
 
     /**
-     * @brief Reflector not record session stats when enabling twamp light moode
+     * @brief Reflector not record session stats when enabling twamp light mode
      */
-    SAI_TWAMP_MODE_TWAMP_LIGHT
+    SAI_TWAMP_MODE_TYPE_LIGHT
 
 } sai_twamp_mode_type_t;
 
 typedef enum _sai_twamp_pkt_tx_mode_t
 {
-    /**@brief Continunos send twamp test packet */
-    SAI_TWAMP_TX_MODE_CONTINUOUS = 0,
+    /**@brief Continues send twamp test packet */
+    SAI_TWAMP_PKT_TX_MODE_CONTINUOUS = 0,
 
     /**@brief Only send twamp test packet with assign numbers */
-    SAI_TWAMP_TX_MODE_PACKET_NUM,
+    SAI_TWAMP_PKT_TX_MODE_PACKET_NUM,
 
     /**@brief Send twamp test packet with period interval */
-    SAI_TWAMP_TX_MODE_PERIOD
+    SAI_TWAMP_PKT_TX_MODE_PERIOD
 
 } sai_twamp_pkt_tx_mode_t;
-
-
 
 typedef enum _sai_twamp_timestamp_format_t
 {
     /**
-     * @brief Twamp test packet timestamp format is ntp format, 32 bit second and 32 bit fractional part of seconds
+     * @brief Packet timestamp format is Network Time Protocol format, 32 bit second and 32 bit fractional part of seconds
      */
-    SAI_TWAMP_MODE_TIMESTAMP_FORMAT_NTP = 0,
+    SAI_TWAMP_TIMESTAMP_FORMAT_NTP = 0,
 
     /**
-     * @brief Twamp test packet timestamp format is ptp format, 32 bit second and 32 bit nanosecond
+     * @brief Packet timestamp format is PTP format, 32 bit second and 32 bit nanosecond
      */
-    SAI_TWAMP_MODE_TIMESTAMP_FORMAT_PTP,
+    SAI_TWAMP_TIMESTAMP_FORMAT_PTP,
 
 } sai_twamp_timestamp_format_t;
 
@@ -180,16 +138,17 @@ typedef enum _sai_twamp_session_attr_t
 
     /**
      * @brief TWAMP test port
-     * valid only SAI_TWAMP_SESSION_ATTR_TWAMP_ENCAPSULATION_TYPE == SAI_TWAMP_ENCAPSULATION_TYPE_IP
-     * or  SAI_TWAMP_ENCAPSULATION_TYPE_L3_MPLS_VPN_UNI
+     *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_PORT
+     * @condition SAI_TWAMP_SESSION_ATTR_TWAMP_ENCAPSULATION_TYPE == SAI_TWAMP_ENCAPSULATION_TYPE_IP
+     * or SAI_TWAMP_SESSION_ATTR_TWAMP_ENCAPSULATION_TYPE == SAI_TWAMP_ENCAPSULATION_TYPE_L3_MPLS_VPN_UNI
      */
     SAI_TWAMP_SESSION_ATTR_TWAMP_PORT = SAI_TWAMP_SESSION_ATTR_START,
 
     /**
-     * @brief Receive port of TWAMP sender and reflector,  enable acl lookup on this port for match test packet to twamp engine.
+     * @brief Receive port of TWAMP sender and reflector, enable ACL lookup on this port for match test packet to twamp engine.
      *
      * @type sai_object_list_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -252,12 +211,12 @@ typedef enum _sai_twamp_session_attr_t
      * @type sai_uint8_t
      * @flags CREATE_ONLY
      * @default 255
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_TTL,
 
     /**
-     * @brief VPN VRFID (L3 MPLS VPN)
+     * @brief Virtual Private Network virtual router (L3 MPLS VPN)
      *
      * @type sai_object_id_t
      * @flags CREATE_ONLY
@@ -276,12 +235,12 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TWAMP_ENCAPSULATION_TYPE,
 
     /**
-     * @brief To enable TWAMP session transmit pakcet
+     * @brief To enable TWAMP session transmit packet
      *
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_SESSION_ENABLE_TRANSMIT,
 
@@ -299,7 +258,7 @@ typedef enum _sai_twamp_session_attr_t
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_PACKET_LENGTH,
 
@@ -323,11 +282,11 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_NEXT_HOP_ID,
 
     /**
-     * @brief TWAMP test packet tx rate per Kbps, configuring by TWAMP sender bandwith of Tx port
+     * @brief TWAMP test packet tx rate per Kbps, configuring by TWAMP sender bandwidth of Tx port
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_TX_RATE,
 
@@ -336,22 +295,22 @@ typedef enum _sai_twamp_session_attr_t
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE,
 
     /**
-     * @brief TWAMP test packet tx duration per mirco second, timneout of the tx pakcet generation
+     * @brief TWAMP test packet tx duration per micro second, timeout of the tx pakcet generation
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_TX_MODE_CONTINUOUS
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_CONTINUOUS
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_DURATION,
 
     /**
      * @brief TWAMP test packet tx count, configuring by TWAMP send packet count of Tx 
-     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_TX_MODE_PACKET_NUM
+     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -360,8 +319,8 @@ typedef enum _sai_twamp_session_attr_t
 
     /**
      * @brief TWAMP test packet tx period, configuring by TWAMP sender period of Tx
-     * Note: if tx period equal 0, sender will contine to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_TX_PKT_DURATION.
-     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_TX_MODE_PERIOD
+     * Note: if tx period equal 0, sender will continue to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_PKT_TX_PKT_DURATION.
+     * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -369,7 +328,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_PERIOD,
 
     /**
-     * @brief Twamp mode of twamp: ligit mode and full mode
+     * @brief Twamp mode of twamp: light mode and full mode
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -377,7 +336,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_MODE,
 
     /**
-     * @brief Twamp mode of twamp: ligit mode and full mode
+     * @brief Twamp mode of twamp: light mode and full mode
      *
      * @type sai_int32_t
      * @flags CREATE_ONLY
@@ -513,7 +472,6 @@ typedef sai_status_t (*sai_get_twamp_session_attribute_fn)(
  *
  * @return SAI_STATUS_SUCCESS on success, failure status code on error
  */
-
 typedef sai_status_t (*sai_get_twamp_session_stats_fn)(
         _In_ sai_object_id_t twamp_session_id,
         _In_ uint32_t number_of_counters,

@@ -1912,12 +1912,12 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_ENABLE,
 
     /**
-     * @brief Define the min threshold of microburst , global control(unit is byte)
+     * @brief Define the min threshold of microburst, global control(unit is byte)
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
      */
-    SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_THRD_MIN,
+    SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_MIN_THRD,
 
     /**
      * @brief Define the max threshold of microburst, global control(unit is byte)
@@ -1925,10 +1925,10 @@ typedef enum _sai_switch_attr_t
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
      */
-    SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_THRD_MAX,
+    SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_MAX_THRD,
 
     /**
-     * @brief Send the packet to cpu when the usage of buffer over the threshold
+     * @brief Send the packet to CPU when the usage of buffer over the threshold
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -1936,7 +1936,7 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_OVERTHRD_EVENT,
 
     /**
-     * @brief Set 8 level threshold(unit is ns) for the duration of microburst
+     * @brief Set 8 level threshold(unit is Nanosecond) for the duration of microburst
      *
      * @type sai_u32_list_t
      * @flags CREATE_AND_SET
@@ -1952,7 +1952,7 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_INGRESS_PERIODIC_MONITOR_ENABLE,
 
     /**
-     * @brief Enable the egress monitor , global control
+     * @brief Enable the egress monitor, global control
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -1960,7 +1960,7 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_EGRESS_PERIODIC_MONITOR_ENABLE,
 
     /**
-     * @brief Enable the egress monitor based on queue , global control
+     * @brief Enable the egress monitor based on queue, global control
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -1976,14 +1976,14 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_TIME_INTERVAL,
 
     /**
-     * @brief Record max total buffer cnt(unit is byte), and when set the attr,the value can only be 0, indicate clearing watermark
+     * @brief Record max total buffer count(unit is byte), and when set the attr,the value can only be 0, indicate clearing watermark
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_INGRESS_WATERMARK,
 
     /**
-     * @brief Record max total buffer cnt(unit is byte), and when set the attr,the value can only be 0, indicate clearing watermark
+     * @brief Record max total buffer count(unit is byte), and when set the attr,the value can only be 0, indicate clearing watermark
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
@@ -1991,23 +1991,23 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_EGRESS_WATERMARK,
 
     /**
-     * @brief Define the min latency threshold(unit is ns)
+     * @brief Define the min latency threshold(unit is Nanosecond)
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
      */
-    SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_THRESHOLD_MIN,
+    SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_MIN_THRESHOLD,
 
     /**
-     * @brief Define the max latency threshold (unit is ns)
+     * @brief Define the max latency threshold (unit is Nanosecond)
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
      */
-    SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_THRESHOLD_MAX,
+    SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_MAX_THRESHOLD,
 
     /**
-     * @brief Set 8 level threshold(unit is ns)
+     * @brief Set 8 level threshold(unit is Nanosecond)
      *
      * @type sai_u32_list_t
      * @flags CREATE_AND_SET
@@ -2045,7 +2045,7 @@ typedef enum _sai_switch_attr_t
     SAI_SWITCH_ATTR_PTP_PACKET_TX_EVENT_NOTIFY,
 
     /**
-     * @brief Max number of TWAMP session supports
+     * @brief Max number of Two-Way Active Measurement Protocol session supports
      *
      * @type sai_uint32_t
      * @flags READ_ONLY

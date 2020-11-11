@@ -670,7 +670,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_ENCAP_NEXTHOP_ID = SAI_TUNNEL_ATTR_CUSTOM_RANGE_START,
 
     /**
-     * @brief MPLS VPN Tunnel mode for decap.
+     * @brief MPLS Virtual Private Network Tunnel mode for decap.
      *
      * @type sai_tunnel_mpls_pw_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -680,7 +680,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_DECAP_MPLS_PW_MODE,
 
     /**
-     * @brief MPLS VPN Tunnel with Control Word for decap.
+     * @brief MPLS Virtual Private Network Tunnel with Control Word for decap.
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -690,7 +690,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_DECAP_MPLS_PW_WITH_CW,
 
     /**
-     * @brief MPLS VPN Tunnel mode for encap.
+     * @brief MPLS Virtual Private Network Tunnel mode for encap.
      *
      * @type sai_tunnel_mpls_pw_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -700,7 +700,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_MODE,
 
     /**
-     * @brief MPLS VPN Tunnel with Control Word for encap.
+     * @brief MPLS Virtual Private Network Tunnel with Control Word for encap.
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -710,7 +710,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_WITH_CW,
 
     /**
-     * @brief Tunnel encap MPLS pw tagged mode vlan
+     * @brief Tunnel encap MPLS Pseudo wire tagged mode vlan
      *
      * @type sai_uint16_t
      * @flags CREATE_AND_SET
@@ -720,7 +720,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_TAGGED_VLAN,
 
     /**
-     * @brief MPLS VPN Tunnel ESI Label Enable.
+     * @brief MPLS Virtual Private Network Tunnel Ethernet Segment Identifier Label Enable.
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -730,7 +730,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_DECAP_ESI_LABEL_VALID,
 
     /**
-     * @brief MPLS VPN Tunnel ESI Label Enable.
+     * @brief MPLS Virtual Private Network Tunnel Ethernet Segment Identifier Label Enable.
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -746,17 +746,18 @@ typedef enum _sai_tunnel_attr_t
      *
      * @type sai_tunnel_exp_mode_t
      * @flags CREATE_ONLY
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      * @default SAI_TUNNEL_EXP_MODE_UNIFORM_MODEL
+     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_DECAP_EXP_MODE,
+
     /**
      * @brief Tunnel EXP mode (pipe or uniform model)
      *
      * @type sai_tunnel_exp_mode_t
      * @flags CREATE_ONLY
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      * @default SAI_TUNNEL_EXP_MODE_UNIFORM_MODEL
+     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_ENCAP_EXP_MODE,
 
@@ -765,8 +766,8 @@ typedef enum _sai_tunnel_attr_t
      *
      * @type sai_uint8_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TUNNEL_ATTR_ENCAP_EXP_MODE == SAI_TUNNEL_EXP_MODE_PIPE_MODEL and SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      * @default 0
+     * @condition SAI_TUNNEL_ATTR_ENCAP_EXP_MODE == SAI_TUNNEL_EXP_MODE_PIPE_MODEL and SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_ENCAP_EXP_VAL,
 
@@ -780,7 +781,7 @@ typedef enum _sai_tunnel_attr_t
     SAI_TUNNEL_ATTR_DECAP_ACL_USE_OUTER_HDR_INFO,
 
     /**
-     * @brief MPLS VPN Tunnel Split-Horizon Enable for flooding or multicast.
+     * @brief MPLS Virtual Private Network Tunnel Split-Horizon Enable for flooding or multicast.
      *
      * @type bool
      * @flags CREATE_AND_SET

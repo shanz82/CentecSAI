@@ -41,7 +41,7 @@ typedef enum _sai_lag_mode_t
     /** LAG member choice mode Static */
     SAI_LAG_MODE_STATIC,
 
-    /** LAG member choice mode Failover */
+    /** LAG member choice mode fail over */
     SAI_LAG_MODE_STATIC_FAILOVER,
 
     /** LAG member choice mode Round-Robin */
@@ -188,8 +188,8 @@ typedef enum _sai_lag_attr_t
      * @brief Max member of LAG Group could add
      *
      * @type sai_uint16_t
-     * @isvlan false
      * @flags CREATE_ONLY
+     * @isvlan false
      */
     SAI_LAG_ATTR_CUSTOM_MAX_MEMBER_NUM,
 

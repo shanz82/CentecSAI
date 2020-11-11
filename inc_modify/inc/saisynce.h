@@ -19,7 +19,7 @@
  *
  * @file    saisynce.h
  *
- * @brief   This module defines SAI SYNCE
+ * @brief   This module defines SAI Synchronous Ethernet
  */
 
 #if !defined (__SAISYNCE_H_)
@@ -70,9 +70,9 @@ typedef enum _sai_synce_attr_t
 } sai_synce_attr_t;
 
 /**
- * @brief Create syncE
+ * @brief Create Synchronous Ethernet
  *
- * @param[out] synce_id synce id
+ * @param[out] synce_id Synchronous Ethernet id
  * @param[in] switch_id Switch id
  * @param[in] attr_count Number of attributes
  * @param[in] attr_list Array of attributes
@@ -86,9 +86,9 @@ typedef sai_status_t (*sai_create_synce_fn)(
         _In_ const sai_attribute_t *attr_list);
 
 /**
- * @brief Remove syncE
+ * @brief Remove Synchronous Ethernet
  *
- * @param[in] synce_id synce id
+ * @param[in] synce_id Synchronous Ethernet id
  *
  * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
@@ -96,10 +96,10 @@ typedef sai_status_t (*sai_remove_synce_fn)(
         _In_ sai_object_id_t synce_id);
 
 /**
- * @brief Set syncE attribute
+ * @brief Set Synchronous Ethernet attribute
  *
- * @param[in] synce_id synce id
- * @param[in] attr attributes
+ * @param[in] synce_id Synchronous Ethernet id
+ * @param[in] attr Attributes
  *
  * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
@@ -108,9 +108,9 @@ typedef sai_status_t (*sai_set_synce_attribute_fn)(
         _In_ const sai_attribute_t *attr);
 
 /**
- * @brief Get syncE attribute
+ * @brief Get Synchronous Ethernet attribute
  *
- * @param[in] synce_id synce id
+ * @param[in] synce_id Synchronous Ethernet id
  * @param[in] attr_count Number of attributes
  * @param[inout] attr_list Array of attributes
  *

@@ -256,7 +256,7 @@ typedef enum _sai_acl_action_type_t
     /** Set isolation group to prevent traffic to members of isolation group */
     SAI_ACL_ACTION_TYPE_SET_ISOLATION_GROUP,
 
-    /** Bind a MACsec flow object */
+    /** Bind Media Access Control Security flow object */
     SAI_ACL_ACTION_TYPE_MACSEC_FLOW,
 
 } sai_acl_action_type_t;
@@ -943,7 +943,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_HAS_VLAN_TAG,
 
     /**
-     * @brief SCI value in MACsec packet SecTAG
+     * @brief Secure Channel Identifier value in Media Access Control Security packet Security TAG
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -979,7 +979,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL0_EXP,
 
     /**
-     * @brief BOS bit value for MPLS label on the top
+     * @brief Bottom of MPLS Stack bit value for MPLS label on the top
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -1015,7 +1015,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL1_EXP,
 
     /**
-     * @brief BOS bit value for second MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for second MPLS label from the top
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -1051,7 +1051,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL2_EXP,
 
     /**
-     * @brief BOS bit value for third MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for third MPLS label from the top
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -1087,7 +1087,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL3_EXP,
 
     /**
-     * @brief BOS bit value for fourth MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for fourth MPLS label from the top
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -1123,7 +1123,7 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_MPLS_LABEL4_EXP,
 
     /**
-     * @brief BOS bit value for fifth MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for fifth MPLS label from the top
      *
      * @type bool
      * @flags CREATE_ONLY
@@ -1833,7 +1833,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_HAS_VLAN_TAG,
 
     /**
-     * @brief SCI value in MACsec packet SecTAG
+     * @brief Secure Channel Identifier value in Media Access Control Security packet Security TAG
      *
      * @type sai_acl_field_data_t sai_uint32_t
      * @flags CREATE_AND_SET
@@ -1869,7 +1869,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL0_EXP,
 
     /**
-     * @brief BOS bit value for MPLS label on the top
+     * @brief Bottom of MPLS Stack bit value for MPLS label on the top
      *
      * @type sai_acl_field_data_t bool
      * @flags CREATE_AND_SET
@@ -1905,7 +1905,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL1_EXP,
 
     /**
-     * @brief BOS bit value for second MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for second MPLS label from the top
      *
      * @type sai_acl_field_data_t bool
      * @flags CREATE_AND_SET
@@ -1941,7 +1941,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL2_EXP,
 
     /**
-     * @brief BOS bit value for third MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for third MPLS label from the top
      *
      * @type sai_acl_field_data_t bool
      * @flags CREATE_AND_SET
@@ -1977,7 +1977,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL3_EXP,
 
     /**
-     * @brief BOS bit value for fourth MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for fourth MPLS label from the top
      *
      * @type sai_acl_field_data_t bool
      * @flags CREATE_AND_SET
@@ -2013,7 +2013,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_MPLS_LABEL4_EXP,
 
     /**
-     * @brief BOS bit value for fifth MPLS label from the top
+     * @brief Bottom of MPLS Stack bit value for fifth MPLS label from the top
      *
      * @type sai_acl_field_data_t bool
      * @flags CREATE_AND_SET
@@ -2689,7 +2689,7 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_ACTION_SET_ISOLATION_GROUP,
 
     /**
-     * @brief MACsec flow
+     * @brief Media Access Control Security flow
      *
      * @type sai_acl_action_data_t sai_object_id_t
      * @flags CREATE_AND_SET
