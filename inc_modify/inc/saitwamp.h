@@ -19,7 +19,7 @@
  *
  * @file    saitwamp.h
  *
- * @brief   This module defines SAI TWAMP interface
+ * @brief   This module defines SAI Two-Way Active Measurement Protocol interface
  */
 
 #if !defined (__SAITWAMP_H_)
@@ -28,13 +28,13 @@
 #include <saitypes.h>
 
 /**
- * @defgroup SAITWAMP SAI - TWAMP specific public APIs and data structures
+ * @defgroup SAITWAMP SAI - Two-Way Active Measurement Protocol specific public APIs and data structures
  *
  * @{
  */
 
 /**
- * @brief SAI TWAMP session authentication mode,
+ * @brief SAI Two-Way Active Measurement Protocol session authentication mode,
  * there are three modes: unauthenticated, authenticated, and encrypted.
  */
 typedef enum _sai_twamp_session_auth_mode_t
@@ -51,7 +51,7 @@ typedef enum _sai_twamp_session_auth_mode_t
 } sai_twamp_session_auth_mode_t;
 
 /**
- * @brief SAI TWAMP role
+ * @brief SAI Two-Way Active Measurement Protocol role
  */
 typedef enum _sai_twamp_session_role_t
 {
@@ -66,12 +66,12 @@ typedef enum _sai_twamp_session_role_t
 typedef enum _sai_twamp_mode_type_t
 {
     /**
-     * @brief Reflector will record session stats when enabling twamp full mode 
+     * @brief Reflector will record session stats when enabling Two-Way Active Measurement Protocol full mode
      */
     SAI_TWAMP_MODE_TYPE_FULL = 0,
 
     /**
-     * @brief Reflector not record session stats when enabling twamp light mode
+     * @brief Reflector not record session stats when enabling Two-Way Active Measurement Protocol light mode
      */
     SAI_TWAMP_MODE_TYPE_LIGHT
 
@@ -79,13 +79,13 @@ typedef enum _sai_twamp_mode_type_t
 
 typedef enum _sai_twamp_pkt_tx_mode_t
 {
-    /**@brief Continues send twamp test packet */
+    /**@brief Continues send Two-Way Active Measurement Protocol test packet */
     SAI_TWAMP_PKT_TX_MODE_CONTINUOUS = 0,
 
-    /**@brief Only send twamp test packet with assign numbers */
+    /**@brief Only send Two-Way Active Measurement Protocol test packet with assign numbers */
     SAI_TWAMP_PKT_TX_MODE_PACKET_NUM,
 
-    /**@brief Send twamp test packet with period interval */
+    /**@brief Send Two-Way Active Measurement Protocol test packet with period interval */
     SAI_TWAMP_PKT_TX_MODE_PERIOD
 
 } sai_twamp_pkt_tx_mode_t;
@@ -105,29 +105,29 @@ typedef enum _sai_twamp_timestamp_format_t
 } sai_twamp_timestamp_format_t;
 
 /**
- * @brief SAI TWAMP type of encapsulation for TWAMP
+ * @brief SAI Two-Way Active Measurement Protocol type of encapsulation for TWAMP
  */
 typedef enum _sai_twamp_encapsulation_type_t
 {
     /**
-     * @brief IP Encapsulation, L2 header | IP(v4/v6) header | UDP header | Original TWAMP test packet
+     * @brief IP Encapsulation, L2 header | IP(v4/v6) header | UDP header | Original Two-Way Active Measurement Protocol test packet
      */
     SAI_TWAMP_ENCAPSULATION_TYPE_IP = 0,
 
     /**
-     * @brief L3 VPN Encapsulation, L2 header | MPLS Label List | IP(v4/v6) header | UDP header | Original TWAMP test packet
+     * @brief L3 Virtual Private Network Encapsulation, L2 header | MPLS Label List | IP(v4/v6) header | UDP header | Original Two-Way Active Measurement Protocol test packet
      */
     SAI_TWAMP_ENCAPSULATION_TYPE_L3_MPLS_VPN_UNI,
 
     /**
-     * @brief L3 VPN Encapsulation, L2 header | MPLS Label List | IP(v4/v6) header | UDP header | Original TWAMP test packet
+     * @brief L3 Virtual Private Network Encapsulation, L2 header | MPLS Label List | IP(v4/v6) header | UDP header | Original Two-Way Active Measurement Protocol test packet
      */
     SAI_TWAMP_ENCAPSULATION_TYPE_L3_MPLS_VPN_NNI,
 
 } sai_twamp_encapsulation_type_t;
 
 /**
- * @brief SAI attributes for TWAMP session
+ * @brief SAI attributes for Two-Way Active Measurement Protocol session
  */
 typedef enum _sai_twamp_session_attr_t
 {
@@ -137,7 +137,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_START,
 
     /**
-     * @brief TWAMP test port
+     * @brief Two-Way Active Measurement Protocol test port
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -148,7 +148,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TWAMP_PORT = SAI_TWAMP_SESSION_ATTR_START,
 
     /**
-     * @brief Receive port of TWAMP sender and reflector, enable ACL lookup on this port for match test packet to twamp engine.
+     * @brief Receive port of Two-Way Active Measurement Protocol sender and reflector, enable ACL lookup on this port for match test packet to Two-Way Active Measurement Protocol engine.
      *
      * @type sai_object_list_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -157,7 +157,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_RECEIVE_PORT,
 
     /**
-     * @brief TWAMP session role of sender or receiver.
+     * @brief Two-Way Active Measurement Protocol session role of sender or receiver.
      *
      * @type sai_twamp_session_role_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -173,7 +173,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_UDP_SRC_PORT,
 
     /**
-     * @brief UDP Dest port
+     * @brief UDP Destination port
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -201,7 +201,7 @@ typedef enum _sai_twamp_session_attr_t
      *
      * @type sai_uint8_t
      * @flags CREATE_ONLY
-     * @default 0     
+     * @default 0
      */
     SAI_TWAMP_SESSION_ATTR_TC,
 
@@ -216,7 +216,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TTL,
 
     /**
-     * @brief Virtual Private Network virtual router (L3 MPLS VPN)
+     * @brief Virtual Private Network virtual router (L3 MPLS Virtual Private Network)
      *
      * @type sai_object_id_t
      * @flags CREATE_ONLY
@@ -235,7 +235,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TWAMP_ENCAPSULATION_TYPE,
 
     /**
-     * @brief To enable TWAMP session transmit packet
+     * @brief To enable Two-Way Active Measurement Protocol session transmit packet
      *
      * @type bool
      * @flags CREATE_AND_SET
@@ -254,7 +254,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_HW_LOOKUP_VALID,
 
     /**
-     * @brief Twamp packet length
+     * @brief Two-Way Active Measurement Protocol packet length
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -263,7 +263,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_PACKET_LENGTH,
 
     /**
-     * @brief TWAMP Session mode: unauthenticated, authenticated, and encrypted.
+     * @brief Two-Way Active Measurement Protocol Session mode: unauthenticated, authenticated, and encrypted.
      *
      * @type sai_twamp_session_auth_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -271,7 +271,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_AUTH_MODE,
 
     /**
-     * @brief TWAMP Session nexthop ID for generating TWAMP test packet
+     * @brief Two-Way Active Measurement Protocol Session nexthop ID for generating Two-Way Active Measurement Protocol test packet
      *
      * @type sai_object_id_t
      * @flags CREATE_ONLY
@@ -282,7 +282,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_NEXT_HOP_ID,
 
     /**
-     * @brief TWAMP test packet tx rate per Kbps, configuring by TWAMP sender bandwidth of Tx port
+     * @brief Two-Way Active Measurement Protocol test packet tx rate per K-bit per second, configuring by Two-Way Active Measurement Protocol sender bandwidth of Tx port
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -291,7 +291,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_RATE,
 
     /**
-     * @brief twamp packet tx mode of twamp: CONTINUOUS, PACKET_NUM, PERIOD
+     * @brief Two-Way Active Measurement Protocol packet tx mode of twamp: CONTINUOUS, PACKET_NUM, PERIOD
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -300,7 +300,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE,
 
     /**
-     * @brief TWAMP test packet tx duration per micro second, timeout of the tx pakcet generation
+     * @brief Two-Way Active Measurement Protocol test packet tx duration per micro second, timeout of the tx packet generation
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -309,7 +309,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_DURATION,
 
     /**
-     * @brief TWAMP test packet tx count, configuring by TWAMP send packet count of Tx 
+     * @brief Two-Way Active Measurement Protocol test packet tx count, configuring by Two-Way Active Measurement Protocol send packet count of Tx
      * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
      *
      * @type sai_uint32_t
@@ -318,7 +318,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_CNT,
 
     /**
-     * @brief TWAMP test packet tx period, configuring by TWAMP sender period of Tx
+     * @brief Two-Way Active Measurement Protocol test packet tx period, configuring by Two-Way Active Measurement Protocol sender period of Tx
      * Note: if tx period equal 0, sender will continue to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_PKT_TX_PKT_DURATION.
      * condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
      *
@@ -328,7 +328,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_PERIOD,
 
     /**
-     * @brief Twamp mode of twamp: light mode and full mode
+     * @brief Two-Way Active Measurement Protocol mode of twamp: light mode and full mode
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -336,7 +336,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_MODE,
 
     /**
-     * @brief Twamp mode of twamp: light mode and full mode
+     * @brief Two-Way Active Measurement Protocol mode of twamp: light mode and full mode
      *
      * @type sai_int32_t
      * @flags CREATE_ONLY
@@ -358,7 +358,7 @@ typedef enum _sai_twamp_session_attr_t
 } sai_twamp_session_attr_t;
 
 /**
- * @brief TWAMP Session counter IDs in sai_get_twamp_session_stats() call
+ * @brief Two-Way Active Measurement Protocol Session counter IDs in sai_get_twamp_session_stats() call
  */
 typedef enum _sai_twamp_session_stats_t
 {
@@ -386,13 +386,13 @@ typedef enum _sai_twamp_session_stats_t
     /** Packet avg latency */
     SAI_TWAMP_SESSION_STATS_AVG_LATENCY,
 
-    /** Packet max jitter */
+    /** Packet max value */
     SAI_TWAMP_SESSION_STATS_MAX_JITTER,
 
-    /** Packet min jitter */
+    /** Packet min value */
     SAI_TWAMP_SESSION_STATS_MIN_JITTER,
 
-    /** Packet avg jitter */
+    /** Packet avg value */
     SAI_TWAMP_SESSION_STATS_AVG_JITTER,
 
     /** Session first timestamp */
@@ -407,9 +407,9 @@ typedef enum _sai_twamp_session_stats_t
 } sai_twamp_session_stats_t;
 
 /**
- * @brief Create TWAMP session.
+ * @brief Create Two-Way Active Measurement Protocol session.
  *
- * @param[out] twamp_session_id TWAMP session id
+ * @param[out] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] switch_id Switch id
  * @param[in] attr_count Number of attributes
  * @param[in] attr_list Value of attributes
@@ -424,9 +424,9 @@ typedef sai_status_t (*sai_create_twamp_session_fn)(
         _In_ const sai_attribute_t *attr_list);
 
 /**
- * @brief Remove TWAMP session.
+ * @brief Remove Two-Way Active Measurement Protocol session.
  *
- * @param[in] twamp_session_id TWAMP session id
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  *
  * @return #SAI_STATUS_SUCCESS if operation is successful otherwise a different
  * error code is returned.
@@ -435,9 +435,9 @@ typedef sai_status_t (*sai_remove_twamp_session_fn)(
         _In_ sai_object_id_t twamp_session_id);
 
 /**
- * @brief Set TWAMP session attributes.
+ * @brief Set Two-Way Active Measurement Protocol session attributes.
  *
- * @param[in] twamp_session_id TWAMP session id
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] attr Value of attribute
  *
  * @return #SAI_STATUS_SUCCESS if operation is successful otherwise a different
@@ -448,9 +448,9 @@ typedef sai_status_t (*sai_set_twamp_session_attribute_fn)(
         _In_ const sai_attribute_t *attr);
 
 /**
- * @brief Get TWAMP session attributes.
+ * @brief Get Two-Way Active Measurement Protocol session attributes.
  *
- * @param[in] twamp_session_id TWAMP session id
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] attr_count Number of attributes
  * @param[inout] attr_list Value of attribute
  *
@@ -463,14 +463,14 @@ typedef sai_status_t (*sai_get_twamp_session_attribute_fn)(
         _Inout_ sai_attribute_t *attr_list);
 
 /**
- * @brief Get TWAMP session statistics counters. Deprecated for backward compatibility.
+ * @brief Get Two-Way Active Measurement Protocol session statistics counters. Deprecated for backward compatibility.
  *
- * @param[in] twamp_session_id TWAMP session id
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] number_of_counters Number of counters in the array
  * @param[in] counter_ids Specifies the array of counter ids
  * @param[out] counters Array of resulting counter values.
  *
- * @return SAI_STATUS_SUCCESS on success, failure status code on error
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
  */
 typedef sai_status_t (*sai_get_twamp_session_stats_fn)(
         _In_ sai_object_id_t twamp_session_id,
@@ -479,9 +479,9 @@ typedef sai_status_t (*sai_get_twamp_session_stats_fn)(
         _Out_ uint64_t *counters);
 
 /**
- * @brief Clear TWAMP session statistics counters.
+ * @brief Clear Two-Way Active Measurement Protocol session statistics counters.
  *
- * @param[in] twamp_session_id TWAMP session id
+ * @param[in] twamp_session_id Two-Way Active Measurement Protocol session id
  * @param[in] number_of_counters Number of counters in the array
  * @param[in] counter_ids Specifies the array of counter ids
  *
@@ -493,7 +493,7 @@ typedef sai_status_t (*sai_clear_twamp_session_stats_fn)(
         _In_ const sai_stat_id_t *counter_ids);
 
 /**
- * @brief TWAMP method table retrieved with sai_api_query()
+ * @brief Two-Way Active Measurement Protocol method table retrieved with sai_api_query()
  */
 typedef struct _sai_twamp_api_t
 {
