@@ -1442,9 +1442,13 @@ typedef void (*sai_packet_event_notification_fn)(
         _In_ uint32_t attr_count,
         _In_ const sai_attribute_t *attr_list);
 
-typedef struct _sai_packet_event_ptp_tx_notification_t
+typedef struct _sai_packet_event_ptp_tx_notification_data_t
 {
-    /** Tx port */
+    /**
+     * @brief Tx port
+     *
+     * @objects SAI_OBJECT_TYPE_PORT
+     */
     sai_object_id_t tx_port;
 
     /** PTP message type */
@@ -1455,7 +1459,7 @@ typedef struct _sai_packet_event_ptp_tx_notification_t
 
     sai_timespec_t tx_timestamp;
 
-} sai_packet_event_ptp_tx_notification_t;
+} sai_packet_event_ptp_tx_notification_data_t;
 
 /**
  * @brief PTP Packet tx notification callback
@@ -1467,7 +1471,7 @@ typedef struct _sai_packet_event_ptp_tx_notification_t
  */
 typedef void (*sai_packet_event_ptp_tx_notification_fn)(
         _In_ uint32_t count,
-        _In_ const sai_packet_event_ptp_tx_notification_t *data);
+        _In_ const sai_packet_event_ptp_tx_notification_data_t *data);
 
 /**
  * @brief Hostif methods table retrieved with sai_api_query()

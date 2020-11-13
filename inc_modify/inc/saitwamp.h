@@ -291,7 +291,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_RATE,
 
     /**
-     * @brief Two-Way Active Measurement Protocol packet tx mode : CONTINUOUS, PACKET_NUM, PERIOD
+     * @brief Two-Way Active Measurement Protocol packet tx mode: CONTINUOUS, PACKET_NUM, PERIOD
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -318,8 +318,8 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_CNT,
 
     /**
-     * @brief Two-Way Active Measurement Protocol test packet tx period, configuring by Two-Way Active Measurement Protocol sender period of Tx
-     * Note: if tx period equal 0, sender will continue to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_PKT_TX_PKT_DURATION.
+     * @brief Two-Way Active Measurement Protocol test packet tx period,
+     * if tx period equal 0, sender will continue to gen packet, duration configured by SAI_TWAMP_SESSION_ATTR_PKT_TX_PKT_DURATION.
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -328,7 +328,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_TX_PKT_PERIOD,
 
     /**
-     * @brief Two-Way Active Measurement Protocol mode of twamp: light mode and full mode
+     * @brief Two-Way Active Measurement Protocol mode: light mode and full mode
      *
      * @type sai_int32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
@@ -336,7 +336,7 @@ typedef enum _sai_twamp_session_attr_t
     SAI_TWAMP_SESSION_ATTR_MODE,
 
     /**
-     * @brief Two-Way Active Measurement Protocol mode of twamp: light mode and full mode
+     * @brief Two-Way Active Measurement Protocol mode: light mode and full mode
      *
      * @type sai_int32_t
      * @flags CREATE_ONLY
@@ -493,7 +493,7 @@ typedef sai_status_t (*sai_get_twamp_session_stats_ext_fn)(
         _In_ sai_object_id_t twamp_session_id,
         _In_ uint32_t number_of_counters,
         _In_ const sai_stat_id_t *counter_ids,
-	_In_ sai_stats_mode_t mode,
+        _In_ sai_stats_mode_t mode,
         _Out_ uint64_t *counters);
 
 /**

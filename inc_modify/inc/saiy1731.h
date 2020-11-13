@@ -467,7 +467,7 @@ typedef enum _sai_y1731_session_attr_t
     SAI_Y1731_SESSION_ATTR_TP_ROUTER_INTERFACE_ID,
 
     /**
-     * @brief Transport Y.1731 without gal, by default, Transport Y.1731 for Label Switched Path with gal, Transport Y.1731 for Pseudo wire without gal
+     * @brief Transport Y.1731 without gal, by default, for Label Switched Path with gal, for Pseudo wire without gal
      * validonly SAI_Y1731_MEG_ATTR_TYPE == SAI_Y1731_MEG_TYPE_MPLS_TP
      *
      * @type bool
@@ -579,7 +579,8 @@ typedef struct _sai_y1731_session_event_notification_t
     /**
      * @brief Y.1731 Session object id or Remote Maintenance End Point object id
      * event could occur on Y.1731 session Local Maintenance End Point or Remote Maintenance End Point
-     * object could be SAI_OBJECT_TYPE_Y1731_SESSION or SAI_OBJECT_TYPE_Y1731_REMOTE_MEP
+     *
+     * @objects SAI_OBJECT_TYPE_Y1731_SESSION, SAI_OBJECT_TYPE_Y1731_REMOTE_MEP
      */
     sai_object_id_t y1731_oid;
 

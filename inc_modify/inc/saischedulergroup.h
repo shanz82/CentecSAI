@@ -126,6 +126,7 @@ typedef enum _sai_scheduler_group_attr_t
      *
      * @type sai_uint16_t
      * @flags CREATE_ONLY
+     * @isvlan false
      * @default 0
      */
     SAI_SCHEDULER_GROUP_ATTR_SERVICE_ID = SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_START,

@@ -198,7 +198,6 @@ typedef enum _sai_queue_attr_t
 
     /**
      * @brief Service Id, if this queue is used for service
-     * if SAI_QUEUE_ATTR_TYPE == SAI_QUEUE_TYPE_SERVICE, this attribute is mandatory
      * the same service id should used in schedule group, and in bridge port,tunnel port
      *
      * @type sai_uint16_t

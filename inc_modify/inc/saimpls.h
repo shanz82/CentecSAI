@@ -325,8 +325,8 @@ typedef enum _sai_inseg_entry_attr_t
      *
      * @type sai_uint16_t
      * @flags CREATE_AND_SET
-     * @default 0
      * @isvlan false
+     * @default 0
      */
     SAI_INSEG_ENTRY_ATTR_SERVICE_ID,
 

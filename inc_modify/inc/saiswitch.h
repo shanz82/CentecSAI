@@ -1844,7 +1844,7 @@ typedef enum _sai_switch_attr_t
      * @flags CREATE_AND_SET
      * @default NULL
      */
-    SAI_SWITCH_ATTR_Y1731_SESSION_EVENT_NOTIFY,
+    SAI_SWITCH_ATTR_Y1731_SESSION_STATE_CHANGE_NOTIFY,
 
     /**
      * @brief Number of Y1731 session in the NPU
@@ -2042,7 +2042,7 @@ typedef enum _sai_switch_attr_t
      * @flags CREATE_AND_SET
      * @default NULL
      */
-    SAI_SWITCH_ATTR_PTP_PACKET_TX_EVENT_NOTIFY,
+    SAI_SWITCH_ATTR_PACKET_EVENT_PTP_TX_NOTIFY,
 
     /**
      * @brief Max number of Two-Way Active Measurement Protocol session supports

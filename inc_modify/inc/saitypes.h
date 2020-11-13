@@ -1144,7 +1144,7 @@ typedef union _sai_attribute_value_t
     /** @validonly meta->attrvaluetype == SAI_ATTR_VALUE_TYPE_CAPTURED_TIMESPEC */
     sai_captured_timespec_t captured_timespec;
 
-    /** @validonly meta->attrvaluetype == SAI_PTP_DOMAIN_ATTR_ADJUEST_CLOCK_OFFSET */
+    /** @validonly meta->attrvaluetype == SAI_ATTR_VALUE_TYPE_TIMEOFFSET */
     sai_timeoffset_t timeoffset;
 
 } sai_attribute_value_t;
