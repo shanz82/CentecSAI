@@ -113,6 +113,8 @@ typedef enum _sai_inseg_entry_observed_role_t
 
 /**
  * @brief Attribute Id for SAI in segment
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_inseg_entry_attr_t
 {
@@ -248,7 +250,7 @@ typedef enum _sai_inseg_entry_attr_t
      * @allownull true
      * @default SAI_NULL_OBJECT_ID
      */
-    SAI_INSEG_ENTRY_ATTR_DECAP_TUNNEL_ID = SAI_INSEG_ENTRY_ATTR_CUSTOM_RANGE_START,
+    SAI_INSEG_ENTRY_ATTR_DECAP_TUNNEL_ID,
 
     /**
      * @brief Fast Reroute nexthop group

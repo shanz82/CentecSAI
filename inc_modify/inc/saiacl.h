@@ -1327,12 +1327,12 @@ typedef enum _sai_acl_table_attr_t
      * @flags CREATE_ONLY
      * @default false
      */
-    SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID = SAI_ACL_TABLE_ATTR_CUSTOM_RANGE_START,
+    SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID,
 
     /**
      * @brief End of Custom range base
      */
-    SAI_ACL_TABLE_ATTR_CUSTOM_RANGE_END = SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID,
+    SAI_ACL_TABLE_ATTR_CUSTOM_RANGE_END,
 
 } sai_acl_table_attr_t;
 
@@ -2822,6 +2822,8 @@ typedef enum _sai_acl_range_type_t
 
 /**
  * @brief Attribute Id for ACL Range Object
+ *
+ * @flags Contains flag
  */
 typedef enum _sai_acl_range_attr_t
 {
@@ -2867,7 +2869,7 @@ typedef enum _sai_acl_range_attr_t
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
      */
-    SAI_ACL_RANGE_ATTR_STAGE = SAI_ACL_RANGE_ATTR_CUSTOM_RANGE_START,
+    SAI_ACL_RANGE_ATTR_STAGE,
 
     /** End of custom range base */
     SAI_ACL_RANGE_ATTR_CUSTOM_RANGE_END

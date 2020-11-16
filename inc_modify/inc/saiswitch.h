@@ -245,6 +245,8 @@ typedef enum _sai_switch_mcast_snooping_capability_t
 /**
  * @brief Attribute Id in sai_set_switch_attribute() and
  * sai_get_switch_attribute() calls
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_switch_attr_t
 {

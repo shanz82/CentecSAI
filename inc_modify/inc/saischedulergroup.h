@@ -35,6 +35,8 @@
 
 /**
  * @brief Enum defining scheduler group attributes.
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_scheduler_group_attr_t
 {
@@ -129,7 +131,7 @@ typedef enum _sai_scheduler_group_attr_t
      * @isvlan false
      * @default 0
      */
-    SAI_SCHEDULER_GROUP_ATTR_SERVICE_ID = SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_START,
+    SAI_SCHEDULER_GROUP_ATTR_SERVICE_ID,
 
     /** End of custom range base */
     SAI_SCHEDULER_GROUP_ATTR_CUSTOM_RANGE_END

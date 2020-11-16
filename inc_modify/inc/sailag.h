@@ -57,6 +57,8 @@ typedef enum _sai_lag_mode_t
 
 /**
  * @brief LAG attribute: List of attributes for LAG object
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_lag_attr_t
 {
@@ -182,7 +184,7 @@ typedef enum _sai_lag_attr_t
      * @type sai_lag_mode_t
      * @flags CREATE_ONLY
      */
-    SAI_LAG_ATTR_MODE = SAI_LAG_ATTR_CUSTOM_RANGE_START,
+    SAI_LAG_ATTR_MODE,
 
     /**
      * @brief Max member of LAG Group could add

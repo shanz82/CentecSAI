@@ -63,6 +63,8 @@ typedef enum _sai_router_interface_type_t
 
 /**
  * @brief Routing interface attribute IDs
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_router_interface_attr_t
 {
@@ -298,7 +300,7 @@ typedef enum _sai_router_interface_attr_t
      * @allownull true
      * @default SAI_NULL_OBJECT_ID
      */
-    SAI_ROUTER_INTERFACE_ATTR_QOS_DSCP_TO_TC_MAP = SAI_ROUTER_INTERFACE_ATTR_CUSTOM_RANGE_START,
+    SAI_ROUTER_INTERFACE_ATTR_QOS_DSCP_TO_TC_MAP,
 
     /**
      * @brief Enable DSCP -> COLOR MAP on router interface

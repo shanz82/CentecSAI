@@ -1240,7 +1240,7 @@ typedef enum _sai_port_attr_t
      * @type sai_uint64_t
      * @flags CREATE_AND_SET
      */
-    SAI_PORT_ATTR_PTP_INGRESS_ASYMMETRY_DELAY = SAI_PORT_ATTR_CUSTOM_RANGE_START,
+    SAI_PORT_ATTR_PTP_INGRESS_ASYMMETRY_DELAY,
 
     /**
      * @brief Egress asymmetry value

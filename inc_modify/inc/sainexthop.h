@@ -104,6 +104,8 @@ typedef enum _sai_next_hop_endpoint_pop_type_t
 
 /**
  * @brief Attribute id for next hop
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_next_hop_attr_t
 {
@@ -312,7 +314,7 @@ typedef enum _sai_next_hop_attr_t
      * @objects SAI_OBJECT_TYPE_TUNNEL
      * @allownull true
      */
-    SAI_NEXT_HOP_ATTR_MPLS_ENCAP_TUNNEL_ID = SAI_NEXT_HOP_ATTR_CUSTOM_RANGE_START,
+    SAI_NEXT_HOP_ATTR_MPLS_ENCAP_TUNNEL_ID,
 
     /**
      * @brief Next hop id

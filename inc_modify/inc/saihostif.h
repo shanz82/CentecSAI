@@ -1221,6 +1221,8 @@ typedef enum _sai_hostif_packet_ptp_tx_packet_op_type_t
 
 /**
  * @brief Host interface packet attributes
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_hostif_packet_attr_t
 {
@@ -1315,7 +1317,7 @@ typedef enum _sai_hostif_packet_attr_t
      * @type sai_uint64_t
      * @flags READ_ONLY
      */
-    SAI_HOSTIF_PACKET_ATTR_Y1731_RXFCL = SAI_HOSTIF_PACKET_ATTR_CUSTOM_RANGE_START,
+    SAI_HOSTIF_PACKET_ATTR_Y1731_RXFCL,
 
     /**
      * @brief OAM Tx packet type (for transmit-only)

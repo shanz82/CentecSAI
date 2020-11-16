@@ -57,6 +57,8 @@ typedef enum _sai_queue_type_t
 
 /**
  * @brief Enum defining queue attributes.
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_queue_attr_t
 {
@@ -205,7 +207,7 @@ typedef enum _sai_queue_attr_t
      * @isvlan false
      * @condition SAI_QUEUE_ATTR_TYPE == SAI_QUEUE_TYPE_SERVICE
      */
-    SAI_QUEUE_ATTR_SERVICE_ID = SAI_QUEUE_ATTR_CUSTOM_RANGE_START,
+    SAI_QUEUE_ATTR_SERVICE_ID,
 
     /** End of custom range base */
     SAI_QUEUE_ATTR_CUSTOM_RANGE_END

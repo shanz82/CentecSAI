@@ -472,6 +472,8 @@ typedef enum _sai_tunnel_mpls_pw_mode_t
 
 /**
  * @brief Defines tunnel attributes
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_tunnel_attr_t
 {
@@ -667,7 +669,7 @@ typedef enum _sai_tunnel_attr_t
      * @flags READ_ONLY
      * @objects SAI_OBJECT_TYPE_NEXT_HOP, SAI_OBJECT_TYPE_NEXT_HOP_GROUP
      */
-    SAI_TUNNEL_ATTR_ENCAP_NEXTHOP_ID = SAI_TUNNEL_ATTR_CUSTOM_RANGE_START,
+    SAI_TUNNEL_ATTR_ENCAP_NEXTHOP_ID,
 
     /**
      * @brief MPLS Virtual Private Network Tunnel mode for decap.

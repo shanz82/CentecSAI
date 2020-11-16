@@ -167,6 +167,8 @@ typedef enum _sai_bfd_ach_channel_type_t
 
 /**
  * @brief SAI attributes for BFD session
+ *
+ * @flags Contains flag
  */
 typedef enum _sai_bfd_session_attr_t
 {
@@ -540,7 +542,7 @@ typedef enum _sai_bfd_session_attr_t
      * @type sai_bfd_session_state_t
      * @flags READ_ONLY
      */
-    SAI_BFD_SESSION_ATTR_REMOTE_STATE = SAI_BFD_SESSION_ATTR_CUSTOM_RANGE_START,
+    SAI_BFD_SESSION_ATTR_REMOTE_STATE,
 
     /**
      * @brief MPLS encapsulated BFD type

@@ -124,6 +124,8 @@ typedef enum _sai_bridge_port_outgoing_service_vlan_cos_mode_t
 
 /**
  * @brief SAI attributes for Bridge Port
+ *
+ * @flags Contains flags
  */
 typedef enum _sai_bridge_port_attr_t
 {
@@ -297,7 +299,7 @@ typedef enum _sai_bridge_port_attr_t
      * @allownull true
      * @default SAI_NULL_OBJECT_ID
      */
-    SAI_BRIDGE_PORT_ATTR_CROSS_CONNECT_BRIDGE_PORT = SAI_BRIDGE_PORT_ATTR_CUSTOM_RANGE_START,
+    SAI_BRIDGE_PORT_ATTR_CROSS_CONNECT_BRIDGE_PORT,
 
     /**
      * @brief Enable OAM for sub port

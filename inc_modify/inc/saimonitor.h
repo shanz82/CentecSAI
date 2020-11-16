@@ -357,7 +357,7 @@ typedef struct _sai_monitor_buffer_notification_data_t
     /**
      * @brief Buffer monitor data.
      *
-     * @passparam meta
+     * @passparam buffer_monitor_message_type
      */
     sai_monitor_buffer_data_t u;
 
@@ -405,7 +405,7 @@ typedef struct _sai_monitor_latency_notification_data_t
     /**
      * @brief Latency monitor data.
      *
-     * @passparam meta
+     * @passparam latency_monitor_message_type
      */
     sai_monitor_latency_data_t u;
 
