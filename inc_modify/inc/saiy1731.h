@@ -122,6 +122,7 @@ typedef enum _sai_y1731_remote_mep_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_Y1731_SESSION
      */
     SAI_Y1731_REMOTE_MEP_ATTR_Y1731_SESSION_ID = SAI_Y1731_REMOTE_MEP_ATTR_START,
 
@@ -139,6 +140,7 @@ typedef enum _sai_y1731_remote_mep_attr_t
      *
      * @type sai_mac_t
      * @flags CREATE_AND_SET
+     * @default vendor
      */
     SAI_Y1731_REMOTE_MEP_ATTR_REMOTE_MEP_MAC_ADDRESS,
 
@@ -147,6 +149,7 @@ typedef enum _sai_y1731_remote_mep_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_Y1731_REMOTE_MEP_ATTR_ENABLE,
 
@@ -178,6 +181,7 @@ typedef enum _sai_y1731_remote_mep_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_Y1731_REMOTE_MEP_ATTR_HW_PROTECTION_IS_PROTECTION_PATH,
 
@@ -186,6 +190,7 @@ typedef enum _sai_y1731_remote_mep_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_Y1731_REMOTE_MEP_ATTR_HW_PROTECTION_EN,
 
@@ -301,6 +306,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_Y1731_MEG
      */
     SAI_Y1731_SESSION_ATTR_MEG = SAI_Y1731_SESSION_ATTR_START,
 
@@ -334,6 +340,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_BRIDGE
      */
     SAI_Y1731_SESSION_ATTR_BRIDGE_ID,
 
@@ -346,6 +353,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_PORT
      */
     SAI_Y1731_SESSION_ATTR_PORT_ID,
 
@@ -372,6 +380,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default true
      */
     SAI_Y1731_SESSION_ATTR_ENABLE,
 
@@ -463,6 +472,8 @@ typedef enum _sai_y1731_session_attr_t
      * @type sai_object_id_t
      * @flags CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_ROUTER_INTERFACE
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
      */
     SAI_Y1731_SESSION_ATTR_TP_ROUTER_INTERFACE_ID,
 
@@ -472,6 +483,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type bool
      * @flags CREATE_ONLY
+     * @default false
      */
     SAI_Y1731_SESSION_ATTR_TP_WITHOUT_GAL,
 
@@ -481,6 +493,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @default 255
      */
     SAI_Y1731_SESSION_ATTR_TTL,
 
@@ -488,6 +501,7 @@ typedef enum _sai_y1731_session_attr_t
      * @brief Transmit Transport Y.1731 MPLS label exp or Vlan Cos
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_Y1731_SESSION_ATTR_EXP_OR_COS,
 

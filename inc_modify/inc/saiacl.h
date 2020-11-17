@@ -2198,9 +2198,19 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_FIELD_TAM_INT_TYPE,
 
     /**
+     * @brief Interface id defined
+     *
+     * @type sai_acl_field_data_t sai_object_id_t
+     * @flags CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_ROUTER_INTERFACE
+     * @default disabled
+     */
+    SAI_ACL_ENTRY_ATTR_FIELD_INTERFACE_ID,
+
+    /**
      * @brief End of Rule Match Fields
      */
-    SAI_ACL_ENTRY_ATTR_FIELD_END = SAI_ACL_ENTRY_ATTR_FIELD_TAM_INT_TYPE,
+    SAI_ACL_ENTRY_ATTR_FIELD_END = SAI_ACL_ENTRY_ATTR_FIELD_INTERFACE_ID,
 
     /*
      * Actions [sai_acl_action_data_t]
@@ -2689,17 +2699,9 @@ typedef enum _sai_acl_entry_attr_t
     SAI_ACL_ENTRY_ATTR_ACTION_SET_ISOLATION_GROUP,
 
     /**
-     * @brief Media Access Control Security flow
-     *
-     * @type sai_acl_action_data_t sai_object_id_t
-     * @flags CREATE_AND_SET
-     */
-    SAI_ACL_ENTRY_ATTR_ACTION_MACSEC_FLOW,
-
-    /**
      * @brief End of Rule Actions
      */
-    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_MACSEC_FLOW,
+    SAI_ACL_ENTRY_ATTR_ACTION_END = SAI_ACL_ENTRY_ATTR_ACTION_SET_ISOLATION_GROUP,
 
     /**
      * @brief End of ACL Entry attributes
@@ -2708,14 +2710,6 @@ typedef enum _sai_acl_entry_attr_t
 
     /** Custom range base value */
     SAI_ACL_ENTRY_ATTR_CUSTOM_RANGE_START = 0x10000000,
-
-    /**
-     * @brief Interface id defined
-     *
-     * @type sai_object_id_t
-     * @flags CREATE_ONLY
-     */
-    SAI_ACL_ENTRY_ATTR_FIELD_INTERFACE_ID,
 
     /** End of custom range base */
     SAI_ACL_ENTRY_ATTR_CUSTOM_RANGE_END

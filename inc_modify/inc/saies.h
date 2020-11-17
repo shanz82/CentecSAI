@@ -48,7 +48,6 @@ typedef enum _sai_es_attr_t
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @default 0
      */
     SAI_ES_ATTR_ESI_LABEL = SAI_ES_ATTR_START,
 

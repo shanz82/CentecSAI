@@ -322,8 +322,7 @@ typedef enum _sai_bridge_port_attr_t
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_NEXT_HOP_GROUP
-     * @default SAI_NULL_OBJECT_ID
-     * @validonly SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_FRR
+     * @condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_FRR
      */
     SAI_BRIDGE_PORT_ATTR_FRR_NHP_GRP,
 
@@ -339,6 +338,8 @@ typedef enum _sai_bridge_port_attr_t
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
      * @objects SAI_OBJECT_TYPE_POLICER
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
      */
     SAI_BRIDGE_PORT_ATTR_SUB_TUNNEL_PORT_POLICER_ID,
 
@@ -367,6 +368,7 @@ typedef enum _sai_bridge_port_attr_t
      * @type sai_uint16_t
      * @flags CREATE_ONLY
      * @isvlan true
+     * @default 0
      */
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_ID,
 
@@ -375,7 +377,8 @@ typedef enum _sai_bridge_port_attr_t
      *
      * @type sai_bridge_port_outgoing_service_vlan_cos_mode_t
      * @flags CREATE_ONLY
-     * @condition SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT or
+     * @default SAI_BRIDGE_PORT_OUTGOING_SERVICE_VLAN_COS_MODE_KEEP
+     * @validonly SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_SUB_PORT or
      * SAI_BRIDGE_PORT_ATTR_TYPE == SAI_BRIDGE_PORT_TYPE_DOUBLE_VLAN_SUB_PORT
      */
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE,
@@ -383,9 +386,11 @@ typedef enum _sai_bridge_port_attr_t
     /**
      * @brief Outgoing Service Vlan Class of Service
      *
+     * Used when SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE == SAI_BRIDGE_PORT_OUTGOING_SERVICE_VLAN_COS_MODE_ASSIGN
+     *
      * @type sai_uint8_t
      * @flags CREATE_ONLY
-     * @condition SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS_MODE == SAI_BRIDGE_PORT_OUTGOING_SERVICE_VLAN_COS_MODE_ASSIGN
+     * @default 0
      */
     SAI_BRIDGE_PORT_ATTR_OUTGOING_SERVICE_VLAN_COS,
 

@@ -119,6 +119,7 @@ typedef enum _sai_npm_session_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_PORT
      */
     SAI_NPM_SESSION_ATTR_NPM_TEST_PORT,
 
@@ -152,6 +153,7 @@ typedef enum _sai_npm_session_attr_t
      * @type sai_uint16_t
      * @flags CREATE_ONLY
      * @isvlan true
+     * @default 0
      */
     SAI_NPM_SESSION_ATTR_OUTER_VLANID,
 
@@ -161,6 +163,7 @@ typedef enum _sai_npm_session_attr_t
      * @type sai_uint16_t
      * @flags CREATE_ONLY
      * @isvlan true
+     * @default 0
      */
     SAI_NPM_SESSION_ATTR_INNER_VLANID,
 
@@ -213,7 +216,7 @@ typedef enum _sai_npm_session_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
+     * @validonly SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
      */
     SAI_NPM_SESSION_ATTR_SESSION_ENABLE_TRANSMIT,
 
@@ -224,6 +227,7 @@ typedef enum _sai_npm_session_attr_t
      * @type sai_object_id_t
      * @flags CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_VIRTUAL_ROUTER
+     * @allownull true
      * @default SAI_NULL_OBJECT_ID
      */
     SAI_NPM_SESSION_ATTR_VPN_VIRTUAL_ROUTER,
@@ -262,35 +266,40 @@ typedef enum _sai_npm_session_attr_t
 
     /**
      * @brief Network Performance Measurement test packet tx period,
+     * Used when SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_PERIOD
+     *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER and SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_PERIOD
      */
     SAI_NPM_SESSION_ATTR_TX_PKT_PERIOD,
 
     /**
      * @brief Network Performance Measurement test packet tx packet count
+     * Used when SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_PACKET_NUM
+     *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER and SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_PACKET_NUM
      */
     SAI_NPM_SESSION_ATTR_TX_PKT_CNT,
 
     /**
      * @brief Network Performance Measurement test packet tx pkt duration
+     * Used when SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_CONTINUOUS
+     *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER and SAI_NPM_SESSION_ATTR_PKT_TX_MODE == SAI_NPM_PKT_TX_MODE_CONTINUOUS
      */
     SAI_NPM_SESSION_ATTR_TX_PKT_DURATION,
 
     /**
      * @brief Network Performance Measurement test packet offset to insert timestamp
-     * @type sai_uint32_t
-     * @flags CREATE_ONLY
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
      *
      * default from octet 4 after L4 (UDP/TCP), timestamp will occupy 8 octets
+     *
+     * @type sai_uint32_t
+     * @flags CREATE_ONLY
+     * @default 4
+     * @validonly SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
      */
     SAI_NPM_SESSION_ATTR_TIMESTAMP_OFFSET,
 
@@ -300,7 +309,8 @@ typedef enum _sai_npm_session_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_ONLY
-     * @condition SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
+     * @default 0
+     * @validonly SAI_NPM_SESSION_ATTR_SESSION_ROLE == SAI_NPM_SESSION_ROLE_SENDER
      */
     SAI_NPM_SESSION_ATTR_SEQUENCE_NUMBER_OFFSET,
 

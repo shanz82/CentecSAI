@@ -204,6 +204,8 @@ typedef enum _sai_port_ptp_mode_t
 /**
  * @brief Attribute Id in sai_set_port_attribute() and
  * sai_get_port_attribute() calls
+ *
+ * @flags Contains flag
  */
 typedef enum _sai_port_attr_t
 {
@@ -1239,6 +1241,7 @@ typedef enum _sai_port_attr_t
      * @brief Ingress asymmetry value
      * @type sai_uint64_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_PORT_ATTR_PTP_INGRESS_ASYMMETRY_DELAY,
 
@@ -1246,6 +1249,7 @@ typedef enum _sai_port_attr_t
      * @brief Egress asymmetry value
      * @type sai_uint64_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_PORT_ATTR_PTP_EGRESS_ASYMMETRY_DELAY,
 
@@ -1253,6 +1257,7 @@ typedef enum _sai_port_attr_t
      * @brief Path delay for Peer-to-peer Transparent Clock, it is the link delay between the device and the linked device
      * @type sai_uint64_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_PORT_ATTR_PTP_PATH_DELAY,
 
@@ -1260,6 +1265,9 @@ typedef enum _sai_port_attr_t
      * @brief Set port domain id, and so far, only one domain is supported, and domain ID cannot be 0.
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
+     * @objects SAI_OBJECT_TYPE_PTP_DOMAIN
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
      */
     SAI_PORT_ATTR_PTP_DOMAIN_ID,
 
@@ -1269,7 +1277,8 @@ typedef enum _sai_port_attr_t
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
      * @objects SAI_OBJECT_TYPE_ES
-     * @default internal
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
      */
     SAI_PORT_ATTR_ES,
 
@@ -1308,6 +1317,7 @@ typedef enum _sai_port_attr_t
      *
      * @type sai_mac_t
      * @flags CREATE_AND_SET
+     * @default vendor
      */
     SAI_PORT_ATTR_MAC_ADDRESS,
 

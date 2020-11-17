@@ -47,7 +47,7 @@ typedef enum _sai_synce_attr_t
      * @flags MANDATORY_ON_CREATE | CREATE_AND_SET
      * @isvlan false
      */
-    SAI_SYNCE_ATTR_RECOVERED_PORT,
+    SAI_SYNCE_ATTR_RECOVERED_PORT = SAI_SYNCE_ATTR_START,
 
     /**
      * @brief Clock divider 0~1023

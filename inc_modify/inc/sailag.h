@@ -183,6 +183,7 @@ typedef enum _sai_lag_attr_t
      *
      * @type sai_lag_mode_t
      * @flags CREATE_ONLY
+     * @default SAI_LAG_MODE_STATIC
      */
     SAI_LAG_ATTR_MODE,
 
@@ -192,6 +193,7 @@ typedef enum _sai_lag_attr_t
      * @type sai_uint16_t
      * @flags CREATE_ONLY
      * @isvlan false
+     * @default 0
      */
     SAI_LAG_ATTR_CUSTOM_MAX_MEMBER_NUM,
 

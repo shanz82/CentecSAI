@@ -211,7 +211,7 @@ typedef enum _sai_twamp_session_attr_t
      * @type sai_uint8_t
      * @flags CREATE_ONLY
      * @default 255
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
+     * @validonly SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_TTL,
 
@@ -221,6 +221,7 @@ typedef enum _sai_twamp_session_attr_t
      * @type sai_object_id_t
      * @flags CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_VIRTUAL_ROUTER
+     * @allownull true
      * @default SAI_NULL_OBJECT_ID
      * @validonly SAI_TWAMP_SESSION_ATTR_HW_LOOKUP_VALID == true
      */
@@ -240,7 +241,7 @@ typedef enum _sai_twamp_session_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
+     * @validonly SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
     SAI_TWAMP_SESSION_ATTR_SESSION_ENABLE_TRANSMIT,
 
@@ -293,18 +294,19 @@ typedef enum _sai_twamp_session_attr_t
     /**
      * @brief Two-Way Active Measurement Protocol packet tx mode: CONTINUOUS, PACKET_NUM, PERIOD
      *
-     * @type sai_int32_t
+     * Used when SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
+     *
+     * @type sai_twamp_pkt_tx_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER
      */
-    SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE,
+    SAI_TWAMP_SESSION_ATTR_TWAMP_PKT_TX_MODE,
 
     /**
      * @brief Two-Way Active Measurement Protocol test packet tx duration per micro second, timeout of the tx packet generation
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_CONTINUOUS
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_TWAMP_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_CONTINUOUS
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_DURATION,
 
@@ -313,7 +315,7 @@ typedef enum _sai_twamp_session_attr_t
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_TWAMP_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PACKET_NUM
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_CNT,
 
@@ -323,7 +325,7 @@ typedef enum _sai_twamp_session_attr_t
      *
      * @type sai_uint32_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
+     * @condition SAI_TWAMP_SESSION_ATTR_SESSION_ROLE == SAI_TWAMP_SESSION_ROLE_SENDER and SAI_TWAMP_SESSION_ATTR_TWAMP_PKT_TX_MODE == SAI_TWAMP_PKT_TX_MODE_PERIOD
      */
     SAI_TWAMP_SESSION_ATTR_TX_PKT_PERIOD,
 

@@ -45,6 +45,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE |CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_PORT
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_PORT = SAI_MONITOR_BUFFER_MONITOR_ATTR_START,
 
@@ -145,6 +146,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type sai_object_id_t
      * @flags MANDATORY_ON_CREATE |CREATE_ONLY
+     * @objects SAI_OBJECT_TYPE_PORT
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_PORT = SAI_MONITOR_LATENCY_MONITOR_ATTR_START,
 

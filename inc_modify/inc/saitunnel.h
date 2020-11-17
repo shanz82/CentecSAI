@@ -676,7 +676,6 @@ typedef enum _sai_tunnel_attr_t
      *
      * @type sai_tunnel_mpls_pw_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @default SAI_TUNNEL_MPLS_PW_MODE_RAW
      * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_DECAP_MPLS_PW_MODE,
@@ -687,7 +686,7 @@ typedef enum _sai_tunnel_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_DECAP_MPLS_PW_WITH_CW,
 
@@ -696,7 +695,6 @@ typedef enum _sai_tunnel_attr_t
      *
      * @type sai_tunnel_mpls_pw_mode_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @default SAI_TUNNEL_MPLS_PW_MODE_RAW
      * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_MODE,
@@ -707,18 +705,19 @@ typedef enum _sai_tunnel_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_WITH_CW,
 
     /**
      * @brief Tunnel encap MPLS Pseudo wire tagged mode vlan
      *
+     * Used when SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2 and SAI_TUNNEL_ATTR_DECAP_MPLS_PW_MODE == SAI_TUNNEL_MPLS_PW_MODE_TAGGED
+     *
      * @type sai_uint16_t
      * @flags CREATE_AND_SET
      * @isvlan false
      * @default 0
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2 and SAI_TUNNEL_ATTR_DECAP_MPLS_PW_MODE == SAI_TUNNEL_MPLS_PW_MODE_TAGGED
      */
     SAI_TUNNEL_ATTR_ENCAP_MPLS_PW_TAGGED_VLAN,
 
@@ -728,7 +727,7 @@ typedef enum _sai_tunnel_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_DECAP_ESI_LABEL_VALID,
 
@@ -738,7 +737,7 @@ typedef enum _sai_tunnel_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default false
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_ENCAP_ESI_LABEL_VALID,
 
@@ -748,9 +747,9 @@ typedef enum _sai_tunnel_attr_t
      * Default SAI_TUNNEL_EXP_MODE_UNIFORM_MODEL
      *
      * @type sai_tunnel_exp_mode_t
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @default SAI_TUNNEL_EXP_MODE_UNIFORM_MODEL
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_DECAP_EXP_MODE,
 
@@ -758,19 +757,19 @@ typedef enum _sai_tunnel_attr_t
      * @brief Tunnel EXP mode (pipe or uniform model)
      *
      * @type sai_tunnel_exp_mode_t
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @default SAI_TUNNEL_EXP_MODE_UNIFORM_MODEL
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_ENCAP_EXP_MODE,
 
     /**
      * @brief Tunnel EXP value (3 bits)
      *
+     * Use when SAI_TUNNEL_ATTR_ENCAP_EXP_MODE == SAI_TUNNEL_EXP_MODE_PIPE_MODEL and SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
+     *
      * @type sai_uint8_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @default 0
-     * @condition SAI_TUNNEL_ATTR_ENCAP_EXP_MODE == SAI_TUNNEL_EXP_MODE_PIPE_MODEL and SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS
      */
     SAI_TUNNEL_ATTR_ENCAP_EXP_VAL,
 
@@ -789,7 +788,7 @@ typedef enum _sai_tunnel_attr_t
      * @type bool
      * @flags CREATE_AND_SET
      * @default true
-     * @condition SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
+     * @validonly SAI_TUNNEL_ATTR_TYPE == SAI_TUNNEL_TYPE_MPLS_L2
      */
     SAI_TUNNEL_ATTR_DECAP_SPLIT_HORIZON_ENABLE,
 

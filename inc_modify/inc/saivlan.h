@@ -420,6 +420,8 @@ typedef enum _sai_vlan_attr_t
      * @brief Set vlan domain id, and so far, only one domain is supported, the value cannot be 0
      * @type sai_object_id_t
      * @flags CREATE_AND_SET
+     * @objects SAI_OBJECT_TYPE_PTP_DOMAIN
+     * @allownull true
      * @default SAI_NULL_OBJECT_ID
      */
     SAI_VLAN_ATTR_PTP_DOMAIN_ID,

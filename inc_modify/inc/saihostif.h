@@ -1370,10 +1370,10 @@ typedef enum _sai_hostif_packet_attr_t
      * @brief Timestamp
      *
      * The timestamp set in PTP peer delay-response T2.
+     * Use when SAI_HOSTIF_PACKET_ATTR_CUSTOM_PTP_TX_PACKET_OP_TYPE == SAI_HOSTIF_PACKET_PTP_TX_PACKET_OP_TYPE_3
      *
      * @type sai_timespec_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @condition SAI_HOSTIF_PACKET_ATTR_CUSTOM_PTP_TX_PACKET_OP_TYPE == SAI_HOSTIF_PACKET_PTP_TX_PACKET_OP_TYPE_3
      */
     SAI_HOSTIF_PACKET_ATTR_TX_TIMESTAMP,
 

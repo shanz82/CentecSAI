@@ -1910,6 +1910,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_ENABLE,
 
@@ -1918,6 +1919,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_MIN_THRD,
 
@@ -1926,6 +1928,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_TOTAL_MAX_THRD,
 
@@ -1934,6 +1937,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_OVERTHRD_EVENT,
 
@@ -1942,6 +1946,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_u32_list_t
      * @flags CREATE_AND_SET
+     * @default empty
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_MB_LEVEL_THRESHOLD,
 
@@ -1950,6 +1955,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_INGRESS_PERIODIC_MONITOR_ENABLE,
 
@@ -1958,6 +1964,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_EGRESS_PERIODIC_MONITOR_ENABLE,
 
@@ -1966,6 +1973,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_EGRESS_QUEUE_PERIODIC_MONITOR_ENABLE,
 
@@ -1974,6 +1982,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_TIME_INTERVAL,
 
@@ -1981,6 +1990,7 @@ typedef enum _sai_switch_attr_t
      * @brief Record max total buffer count(unit is byte), and when set the attr,the value can only be 0, indicate clearing watermark
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_INGRESS_WATERMARK,
 
@@ -1989,6 +1999,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_BUFFER_MONITOR_EGRESS_WATERMARK,
 
@@ -1997,6 +2008,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_MIN_THRESHOLD,
 
@@ -2005,6 +2017,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_MAX_THRESHOLD,
 
@@ -2013,6 +2026,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_u32_list_t
      * @flags CREATE_AND_SET
+     * @default empty
      */
     SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_LEVEL_THRESHOLD,
 
@@ -2021,6 +2035,7 @@ typedef enum _sai_switch_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_SWITCH_ATTR_MONITOR_LATENCY_MONITOR_INTERVAL,
 

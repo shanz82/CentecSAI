@@ -548,7 +548,8 @@ typedef enum _sai_bfd_session_attr_t
      * @brief MPLS encapsulated BFD type
      *
      * @type sai_int32_t
-     * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @flags CREATE_ONLY
+     * @default 0
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_MPLS_ENCAP_BFD_TYPE,
@@ -557,7 +558,8 @@ typedef enum _sai_bfd_session_attr_t
      * @brief BFD Associated Channel Header valid
      *
      * @type bool
-     * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @flags CREATE_ONLY
+     * @default false
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_ACH_HEADER_VALID,
@@ -573,7 +575,8 @@ typedef enum _sai_bfd_session_attr_t
     /**
      * @brief MPLS label bind to BFD session
      * @type sai_uint32_t
-     * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     * @flags CREATE_ONLY
+     * @default 0
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_MPLS_IN_LABEL,
@@ -582,6 +585,7 @@ typedef enum _sai_bfd_session_attr_t
      * @brief Transmit MPLS label TTL
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @default 255
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_MPLS_TTL,
@@ -590,6 +594,7 @@ typedef enum _sai_bfd_session_attr_t
      * @brief Transmit MPLS label exp
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
+     * @default 0
      * @validonly SAI_BFD_SESSION_ATTR_BFD_ENCAPSULATION_TYPE == SAI_BFD_ENCAPSULATION_TYPE_MPLS
      */
     SAI_BFD_SESSION_ATTR_MPLS_EXP,
@@ -598,13 +603,15 @@ typedef enum _sai_bfd_session_attr_t
      * @brief MPLS transport BFD CV enable
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_BFD_SESSION_ATTR_TP_CV_ENABLE,
 
     /**
      * @brief MPLS transport BFD CV Source Maintenance End Point-ID char[SAI_BFD_CV_SIZE]
      * @type char
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
+     * @default ""
      */
     SAI_BFD_SESSION_ATTR_TP_CV_SRC_MEP_ID,
 
@@ -614,6 +621,8 @@ typedef enum _sai_bfd_session_attr_t
      * @type sai_object_id_t
      * @flags CREATE_ONLY
      * @objects SAI_OBJECT_TYPE_ROUTER_INTERFACE
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
      */
     SAI_BFD_SESSION_ATTR_TP_ROUTER_INTERFACE_ID,
 
@@ -622,6 +631,7 @@ typedef enum _sai_bfd_session_attr_t
      *
      * @type bool
      * @flags CREATE_ONLY
+     * @default false
      */
     SAI_BFD_SESSION_ATTR_TP_WITHOUT_GAL,
 
@@ -655,6 +665,7 @@ typedef enum _sai_bfd_session_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_BFD_SESSION_ATTR_HW_PROTECTION_IS_PROTECTION_PATH,
 
@@ -664,6 +675,7 @@ typedef enum _sai_bfd_session_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_BFD_SESSION_ATTR_HW_PROTECTION_EN,
 

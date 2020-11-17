@@ -203,7 +203,7 @@ typedef enum _sai_queue_attr_t
      * the same service id should used in schedule group, and in bridge port,tunnel port
      *
      * @type sai_uint16_t
-     * @flags MANDATORY_ON_CREATE | CREATE_ONLY | KEY
+     * @flags MANDATORY_ON_CREATE | CREATE_ONLY
      * @isvlan false
      * @condition SAI_QUEUE_ATTR_TYPE == SAI_QUEUE_TYPE_SERVICE
      */
