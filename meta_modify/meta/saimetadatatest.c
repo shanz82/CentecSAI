@@ -391,7 +391,7 @@ void enum_size_check_test(void)
     TEST_ASSERT_TRUE((sizeof(sai_ingress_priority_group_stat_t) == sizeof(int32_t)), "invalid enum sai_ingress_priority_group_stat_t size");
     TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_attr_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_attr_t size");
     TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_configured_role_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_configured_role_t size");
-    TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_observed_role_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_observed_role_t size");
+    TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_frr_observed_role_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_frr_observed_role_t size");
     TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_pop_qos_mode_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_pop_qos_mode_t size");
     TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_pop_ttl_mode_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_pop_ttl_mode_t size");
     TEST_ASSERT_TRUE((sizeof(sai_inseg_entry_psc_type_t) == sizeof(int32_t)), "invalid enum sai_inseg_entry_psc_type_t size");

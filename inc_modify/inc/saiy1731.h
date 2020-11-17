@@ -493,7 +493,7 @@ typedef enum _sai_y1731_session_attr_t
      *
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
-     * @default 255
+     * @default 0
      */
     SAI_Y1731_SESSION_ATTR_TTL,
 

@@ -101,15 +101,15 @@ typedef enum _sai_inseg_entry_configured_role_t
 /**
  * @brief MPLS in-segment observed role
  */
-typedef enum _sai_inseg_entry_observed_role_t
+typedef enum _sai_inseg_entry_frr_observed_role_t
 {
     /** MPLS in-segment is active */
-    SAI_INSEG_ENTRY_OBSERVED_ROLE_ACTIVE,
+    SAI_INSEG_ENTRY_FRR_OBSERVED_ROLE_ACTIVE,
 
     /** MPLS in-segment is inactive */
-    SAI_INSEG_ENTRY_OBSERVED_ROLE_INACTIVE,
+    SAI_INSEG_ENTRY_FRR_OBSERVED_ROLE_INACTIVE,
 
-} sai_inseg_entry_observed_role_t;
+} sai_inseg_entry_frr_observed_role_t;
 
 /**
  * @brief Attribute Id for SAI in segment
@@ -256,7 +256,7 @@ typedef enum _sai_inseg_entry_attr_t
      * @brief Fast Reroute nexthop group
      *
      * @type sai_object_id_t
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @objects SAI_OBJECT_TYPE_NEXT_HOP_GROUP
      * @allownull true
      * @default SAI_NULL_OBJECT_ID
@@ -268,7 +268,7 @@ typedef enum _sai_inseg_entry_attr_t
      * when SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
      * @type sai_inseg_entry_configured_role_t
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @default SAI_INSEG_ENTRY_CONFIGURED_ROLE_PRIMARY
      */
     SAI_INSEG_ENTRY_ATTR_FRR_CONFIGURED_ROLE,
@@ -278,8 +278,9 @@ typedef enum _sai_inseg_entry_attr_t
      *
      * valid only SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
-     * @type sai_inseg_entry_observed_role_t
+     * @type sai_inseg_entry_frr_observed_role_t
      * @flags READ_ONLY
+     * @isresourcetype true
      */
     SAI_INSEG_ENTRY_ATTR_FRR_OBSERVED_ROLE,
 
@@ -288,7 +289,7 @@ typedef enum _sai_inseg_entry_attr_t
      * validonly SAI_INSEG_ENTRY_ATTR_FRR_NHP_GRP != NULL
      *
      * @type bool
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @default false
      */
     SAI_INSEG_ENTRY_ATTR_FRR_INACTIVE_RX_DISCARD,

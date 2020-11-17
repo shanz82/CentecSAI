@@ -54,6 +54,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_MB_PORT_MIN_THRESHOLD,
 
@@ -62,6 +63,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_MB_PORT_MAX_THRESHOLD,
 
@@ -71,6 +73,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_INGRESS_PORT_PERIODIC_MONITOR_ENABLE,
 
@@ -80,6 +83,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_EGRESS_PORT_PERIODIC_MONITOR_ENABLE,
 
@@ -88,6 +92,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_EGRESS_PORT_UNICAST_WATERMARK,
 
@@ -96,6 +101,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_EGRESS_PORT_MULTICAST_WATERMARK,
 
@@ -104,6 +110,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_EGRESS_PORT_TOTAL_WATERMARK,
 
@@ -112,6 +119,7 @@ typedef enum _sai_monitor_buffer_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_BUFFER_MONITOR_ATTR_INGRESS_PORT_TOTAL_WATERMARK,
 
@@ -155,6 +163,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_ENABLE,
 
@@ -164,6 +173,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type sai_bool_list_t
      * @flags CREATE_AND_SET
+     * @default empty
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_LEVEL_OVERTHRD_EVENT,
 
@@ -173,6 +183,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type bool
      * @flags CREATE_AND_SET
+     * @default false
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_PERIODIC_MONITOR_ENABLE,
 
@@ -182,6 +193,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type sai_bool_list_t
      * @flags CREATE_AND_SET
+     * @default empty
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_LEVEL_DISCARD,
 
@@ -190,6 +202,7 @@ typedef enum _sai_monitor_latency_monitor_attr_t
      *
      * @type sai_uint32_t
      * @flags CREATE_AND_SET
+     * @default 0
      */
     SAI_MONITOR_LATENCY_MONITOR_ATTR_PORT_WATERMARK,
 

@@ -256,9 +256,6 @@ typedef enum _sai_acl_action_type_t
     /** Set isolation group to prevent traffic to members of isolation group */
     SAI_ACL_ACTION_TYPE_SET_ISOLATION_GROUP,
 
-    /** Bind Media Access Control Security flow object */
-    SAI_ACL_ACTION_TYPE_MACSEC_FLOW,
-
 } sai_acl_action_type_t;
 
 /**
@@ -1281,9 +1278,18 @@ typedef enum _sai_acl_table_attr_t
     SAI_ACL_TABLE_ATTR_FIELD_TAM_INT_TYPE,
 
     /**
+     * @brief Interface id defined
+     *
+     * @type bool
+     * @flags CREATE_ONLY
+     * @default false
+     */
+    SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID,
+
+    /**
      * @brief End of ACL Table Match Field
      */
-    SAI_ACL_TABLE_ATTR_FIELD_END = SAI_ACL_TABLE_ATTR_FIELD_TAM_INT_TYPE,
+    SAI_ACL_TABLE_ATTR_FIELD_END = SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID,
 
     /**
      * @brief ACL table entries associated with this table.
@@ -1319,15 +1325,6 @@ typedef enum _sai_acl_table_attr_t
      * @brief Custom range base value start
      */
     SAI_ACL_TABLE_ATTR_CUSTOM_RANGE_START = 0x10000000,
-
-    /**
-     * @brief Interface id defined
-     *
-     * @type bool
-     * @flags CREATE_ONLY
-     * @default false
-     */
-    SAI_ACL_TABLE_ATTR_FIELD_INTERFACE_ID,
 
     /**
      * @brief End of Custom range base
@@ -2201,7 +2198,7 @@ typedef enum _sai_acl_entry_attr_t
      * @brief Interface id defined
      *
      * @type sai_acl_field_data_t sai_object_id_t
-     * @flags CREATE_ONLY
+     * @flags CREATE_AND_SET
      * @objects SAI_OBJECT_TYPE_ROUTER_INTERFACE
      * @default disabled
      */

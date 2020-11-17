@@ -578,6 +578,7 @@ void check_attr_object_type_provided(
         case SAI_ATTR_VALUE_TYPE_INT8_LIST:
         case SAI_ATTR_VALUE_TYPE_UINT8_LIST:
         case SAI_ATTR_VALUE_TYPE_INT32_LIST:
+        case SAI_ATTR_VALUE_TYPE_BOOL_LIST:
         case SAI_ATTR_VALUE_TYPE_UINT8:
         case SAI_ATTR_VALUE_TYPE_UINT16:
         case SAI_ATTR_VALUE_TYPE_VLAN_LIST:
@@ -599,6 +600,8 @@ void check_attr_object_type_provided(
         case SAI_ATTR_VALUE_TYPE_IP_ADDRESS_LIST:
         case SAI_ATTR_VALUE_TYPE_PORT_EYE_VALUES_LIST:
         case SAI_ATTR_VALUE_TYPE_TIMESPEC:
+        case SAI_ATTR_VALUE_TYPE_CAPTURED_TIMESPEC:
+	case SAI_ATTR_VALUE_TYPE_TIMEOFFSET:
 
         case SAI_ATTR_VALUE_TYPE_ACL_FIELD_DATA_BOOL:
         case SAI_ATTR_VALUE_TYPE_ACL_FIELD_DATA_UINT8:
@@ -772,6 +775,12 @@ void check_attr_default_required(
                 break;
             }
 
+	    if (md->objecttype == SAI_OBJECT_TYPE_PTP_DOMAIN &&
+                   (md->attrid == SAI_PTP_DOMAIN_ATTR_ADJUEST_CLOCK_DRIFT_OFFSET || md->attrid == SAI_PTP_DOMAIN_ATTR_ADJUEST_CLOCK_TIME_OFFSET))
+	    {
+		break;
+	    }
+
             if (md->defaultvalue == NULL)
             {
                 META_MD_ASSERT_FAIL(md, "default value type is provided, but default value pointer is NULL");
@@ -835,6 +844,8 @@ void check_attr_default_required(
 
         case SAI_ATTR_VALUE_TYPE_OBJECT_ID:
         case SAI_ATTR_VALUE_TYPE_BOOL:
+	case SAI_ATTR_VALUE_TYPE_INT8:
+	case SAI_ATTR_VALUE_TYPE_INT16:
         case SAI_ATTR_VALUE_TYPE_INT32:
         case SAI_ATTR_VALUE_TYPE_UINT8:
         case SAI_ATTR_VALUE_TYPE_UINT16:
@@ -844,6 +855,8 @@ void check_attr_default_required(
         case SAI_ATTR_VALUE_TYPE_IP_ADDRESS:
         case SAI_ATTR_VALUE_TYPE_IP_PREFIX:
         case SAI_ATTR_VALUE_TYPE_TIMESPEC:
+	case SAI_ATTR_VALUE_TYPE_CAPTURED_TIMESPEC:
+        case SAI_ATTR_VALUE_TYPE_TIMEOFFSET:
         case SAI_ATTR_VALUE_TYPE_IPV4:
             break;
 
@@ -878,6 +891,7 @@ void check_attr_default_required(
         case SAI_ATTR_VALUE_TYPE_MAP_LIST:
         case SAI_ATTR_VALUE_TYPE_IP_ADDRESS_LIST:
         case SAI_ATTR_VALUE_TYPE_PORT_EYE_VALUES_LIST:
+        case SAI_ATTR_VALUE_TYPE_BOOL_LIST:
 
             if (((md->objecttype == SAI_OBJECT_TYPE_PORT) || (md->objecttype == SAI_OBJECT_TYPE_PORT_SERDES))
                  && md->defaultvaluetype == SAI_DEFAULT_VALUE_TYPE_SWITCH_INTERNAL)
@@ -1064,6 +1078,7 @@ void check_attr_default_value_type(
                 case SAI_ATTR_VALUE_TYPE_MAP_LIST:
                 case SAI_ATTR_VALUE_TYPE_IP_ADDRESS_LIST:
                 case SAI_ATTR_VALUE_TYPE_PORT_EYE_VALUES_LIST:
+                case SAI_ATTR_VALUE_TYPE_BOOL_LIST:
                     break;
 
                 default:
@@ -1286,7 +1301,7 @@ void check_attr_conditions(
 
             default:
 
-                META_MD_ASSERT_FAIL(md, "conditional attribute must be create only");
+                META_MD_ASSERT_FAIL(md, "conditional attribute must be create only, flag : %0x", cmd->flags);
         }
     }
 }
@@ -2389,6 +2404,7 @@ void check_attr_is_primitive(
         case SAI_ATTR_VALUE_TYPE_SEGMENT_LIST:
         case SAI_ATTR_VALUE_TYPE_IP_ADDRESS_LIST:
         case SAI_ATTR_VALUE_TYPE_PORT_EYE_VALUES_LIST:
+        case SAI_ATTR_VALUE_TYPE_BOOL_LIST:
 
             if (md->isprimitive)
             {
@@ -2435,6 +2451,8 @@ void check_attr_is_primitive(
         case SAI_ATTR_VALUE_TYPE_UINT64:
         case SAI_ATTR_VALUE_TYPE_UINT8:
         case SAI_ATTR_VALUE_TYPE_TIMESPEC:
+	case SAI_ATTR_VALUE_TYPE_CAPTURED_TIMESPEC:
+        case SAI_ATTR_VALUE_TYPE_TIMEOFFSET:
         case SAI_ATTR_VALUE_TYPE_IPV4:
 
             if (!md->isprimitive)
@@ -3268,6 +3286,18 @@ void check_objects_for_loops_recursive(
 
         if (m->objecttype == SAI_OBJECT_TYPE_SCHEDULER_GROUP &&
                 m->attrid == SAI_SCHEDULER_GROUP_ATTR_PARENT_NODE)
+        {
+            continue;
+        }
+
+        if (m->objecttype == SAI_OBJECT_TYPE_NEXT_HOP &&
+                m->attrid == SAI_NEXT_HOP_ATTR_NEXT_LEVEL_NEXT_HOP_ID)
+        {
+            continue;
+        }
+
+        if (m->objecttype == SAI_OBJECT_TYPE_BRIDGE_PORT &&
+                m->attrid == SAI_BRIDGE_PORT_ATTR_CROSS_CONNECT_BRIDGE_PORT)
         {
             continue;
         }
@@ -4128,7 +4158,17 @@ void check_object_ro_list(
             oi->objecttype == SAI_OBJECT_TYPE_HOSTIF_TABLE_ENTRY ||
             oi->objecttype == SAI_OBJECT_TYPE_DTEL ||
             oi->objecttype == SAI_OBJECT_TYPE_DTEL_QUEUE_REPORT ||
-            oi->objecttype == SAI_OBJECT_TYPE_DTEL_EVENT)
+            oi->objecttype == SAI_OBJECT_TYPE_DTEL_EVENT ||
+            oi->objecttype == SAI_OBJECT_TYPE_TWAMP_SESSION ||
+            oi->objecttype == SAI_OBJECT_TYPE_NPM_SESSION ||
+            oi->objecttype == SAI_OBJECT_TYPE_ES ||
+            oi->objecttype == SAI_OBJECT_TYPE_Y1731_MEG ||
+            oi->objecttype == SAI_OBJECT_TYPE_Y1731_SESSION ||
+            oi->objecttype == SAI_OBJECT_TYPE_Y1731_REMOTE_MEP ||
+            oi->objecttype == SAI_OBJECT_TYPE_PTP_DOMAIN ||
+            oi->objecttype == SAI_OBJECT_TYPE_SYNCE ||
+            oi->objecttype == SAI_OBJECT_TYPE_MONITOR_BUFFER_MONITOR ||
+            oi->objecttype == SAI_OBJECT_TYPE_MONITOR_LATENCY_MONITOR)
     {
         /*
          * We skip hostif table entry since there is no 1 object which can
@@ -4366,6 +4406,12 @@ void check_graph_connected()
             META_LOG_WARN("debug counter object %s is disconnected from graph",
                     sai_metadata_all_object_type_infos[i]->objecttypename);
 
+            continue;
+        }
+
+        if (SAI_OBJECT_TYPE_SYNCE == i) {
+            META_LOG_WARN("synce object %s is disconnected from graph",
+                    sai_metadata_all_object_type_infos[i]->objecttypename);
             continue;
         }
 

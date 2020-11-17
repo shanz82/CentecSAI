@@ -130,7 +130,7 @@ typedef enum _sai_ptp_domain_attr_t
      *
      * @type sai_timeoffset_t
      * @flags CREATE_AND_SET
-     * @default empty
+     * @default const
      */
     SAI_PTP_DOMAIN_ATTR_ADJUEST_CLOCK_DRIFT_OFFSET,
 
@@ -139,7 +139,7 @@ typedef enum _sai_ptp_domain_attr_t
      *
      * @type sai_timeoffset_t
      * @flags CREATE_AND_SET
-     * @default empty
+     * @default const
      */
     SAI_PTP_DOMAIN_ATTR_ADJUEST_CLOCK_TIME_OFFSET,
 
@@ -158,7 +158,7 @@ typedef enum _sai_ptp_domain_attr_t
      * @type sai_int8_t
      * @flags CREATE_AND_SET
      * @default 0
-     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
+     * @validonly SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_LEAP_SECOND,
 
@@ -168,7 +168,7 @@ typedef enum _sai_ptp_domain_attr_t
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      * @default 0
-     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
+     * @validonly SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_PPS_STATUS,
 
@@ -178,7 +178,7 @@ typedef enum _sai_ptp_domain_attr_t
      * @type sai_uint8_t
      * @flags CREATE_AND_SET
      * @default 0
-     * @condition SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
+     * @validonly SAI_PTP_DOMAIN_ATTR_TOD_INTF_ENABLE == false
      */
     SAI_PTP_DOMAIN_ATTR_TOD_INTF_PPS_ACCURACY,
 

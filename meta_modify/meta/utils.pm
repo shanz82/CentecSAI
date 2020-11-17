@@ -61,8 +61,6 @@ sub WriteHeader
     my $ident = GetIdent($content);
 
     $HEADER_CONTENT .= $ident . $content . "\n";
-
-    #print $HEADER_CONTENT;
 }
 
 sub WriteSource
@@ -72,8 +70,6 @@ sub WriteSource
     my $ident = GetIdent($content);
 
     $SOURCE_CONTENT .= $ident . $content . "\n";
-
-    #print $SOURCE_CONTENT;
 }
 
 sub WriteTest

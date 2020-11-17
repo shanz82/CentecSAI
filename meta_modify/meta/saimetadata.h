@@ -177,7 +177,7 @@ extern const sai_enum_metadata_t sai_metadata_enum_sai_ingress_priority_group_at
 extern const sai_enum_metadata_t sai_metadata_enum_sai_ingress_priority_group_stat_t;
 extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_attr_t;
 extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_configured_role_t;
-extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_observed_role_t;
+extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_frr_observed_role_t;
 extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_pop_qos_mode_t;
 extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_pop_ttl_mode_t;
 extern const sai_enum_metadata_t sai_metadata_enum_sai_inseg_entry_psc_type_t;
@@ -565,8 +565,8 @@ extern const char* sai_metadata_get_ingress_priority_group_stat_name(
 extern const char* sai_metadata_get_inseg_entry_configured_role_name(
     _In_ sai_inseg_entry_configured_role_t value);
 
-extern const char* sai_metadata_get_inseg_entry_observed_role_name(
-    _In_ sai_inseg_entry_observed_role_t value);
+extern const char* sai_metadata_get_inseg_entry_frr_observed_role_name(
+    _In_ sai_inseg_entry_frr_observed_role_t value);
 
 extern const char* sai_metadata_get_inseg_entry_pop_qos_mode_name(
     _In_ sai_inseg_entry_pop_qos_mode_t value);
@@ -1465,9 +1465,9 @@ extern int sai_serialize_inseg_entry_configured_role(
     _Out_ char *buffer,
     _In_ sai_inseg_entry_configured_role_t inseg_entry_configured_role);
 
-extern int sai_serialize_inseg_entry_observed_role(
+extern int sai_serialize_inseg_entry_frr_observed_role(
     _Out_ char *buffer,
-    _In_ sai_inseg_entry_observed_role_t inseg_entry_observed_role);
+    _In_ sai_inseg_entry_frr_observed_role_t inseg_entry_frr_observed_role);
 
 extern int sai_serialize_inseg_entry_pop_qos_mode(
     _Out_ char *buffer,
@@ -2561,9 +2561,9 @@ extern int sai_deserialize_inseg_entry_configured_role(
     _In_ const char *buffer,
     _Out_ sai_inseg_entry_configured_role_t *inseg_entry_configured_role);
 
-extern int sai_deserialize_inseg_entry_observed_role(
+extern int sai_deserialize_inseg_entry_frr_observed_role(
     _In_ const char *buffer,
-    _Out_ sai_inseg_entry_observed_role_t *inseg_entry_observed_role);
+    _Out_ sai_inseg_entry_frr_observed_role_t *inseg_entry_frr_observed_role);
 
 extern int sai_deserialize_inseg_entry_pop_qos_mode(
     _In_ const char *buffer,
